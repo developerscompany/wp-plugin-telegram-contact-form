@@ -3,7 +3,7 @@
     <div id="general-tab-wrapper">              
         
         <div class="tab-header">
-            <h2><?php _e('About the plugin', 'rivoforms'); ?></h2>          
+            <h2><?php esc_html_e('About the plugin', 'rivoforms'); ?></h2>          
         </div>
 
         <div class="rft-inner-tab-content">

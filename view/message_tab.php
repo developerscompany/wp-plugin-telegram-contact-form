@@ -1,7 +1,7 @@
 <div id="message-tab" class="tab-pane" role="tabpanel">
     <div id="message-tab-wrapper">                              
         <div class="tab-header">
-            <h2> <?php _e('Notification Message Options', 'rivoforms'); ?> </h2>                    
+            <h2> <?php esc_html_e('Notification Message Options', 'rivoforms'); ?> </h2>                    
         </div>
 
         <div class="rft-inner-tab-content">
@@ -9,14 +9,14 @@
                 
                 <form class="rft-form" > 
                     
-                    <p class="description"><?php _e('Message before form data', 'rivoforms'); ?></p>
+                    <p class="description"><?php esc_html_e('Message before form data', 'rivoforms'); ?></p>
                     <div class="form-group">
                         <div class="rft-input-group textarea-input-group">
                             <textarea  class="" id="tm_bot_msg_before" name="tm_bot_msg_before" value="<?php echo self::$tm_bot_settings['msg_text_before'] ?>"><?php echo self::$tm_bot_settings['msg_text_before'] ?></textarea>                            
                         </div>  
                     </div>                     
 
-                    <p class="description"><?php _e('Modify input names output', 'rivoforms'); ?></p>
+                    <p class="description"><?php esc_html_e('Modify input names output', 'rivoforms'); ?></p>
                     <div class="form-group">
 
                     <?php
@@ -71,7 +71,7 @@
 
                     <!-- <div class="spacer"></div> -->
 
-                    <p class="description"><?php _e('Message after form data', 'rivoforms'); ?></p>
+                    <p class="description"><?php esc_html_e('Message after form data', 'rivoforms'); ?></p>
                     <div class="form-group">
                         <div class="rft-input-group textarea-input-group">
                             <textarea  class="" id="tm_bot_msg_after" name="tm_bot_msg_after" value="<?php echo self::$tm_bot_settings['msg_text_after'] ?>"><?php echo self::$tm_bot_settings['msg_text_after'] ?></textarea>                            
@@ -80,12 +80,12 @@
 
                     <!-- <div class="spacer"></div>    -->
 
-                    <p class="description"><?php _e('Other options', 'rivoforms'); ?></p>
+                    <p class="description"><?php esc_html_e('Other options', 'rivoforms'); ?></p>
                     <div class="form-group">                       
                         <div class="rft-input-group"> 
                             <?php $tm_bot_add_form_url = self::$tm_bot_settings['msg_add_url'] == "true" ? 'checked' : ''; ?>
                             <input type="checkbox" class="" id="tm_bot_add_form_url" name="tm_bot_add_form_url" <?php echo $tm_bot_add_form_url; ?> >
-                            <label for="tm_bot_add_form_url"><?php _e('add form submition url to message', 'rivoforms'); ?></label>
+                            <label for="tm_bot_add_form_url"><?php esc_html_e('add form submition url to message', 'rivoforms'); ?></label>
                         </div> 
                     </div> 
 

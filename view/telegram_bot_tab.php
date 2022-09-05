@@ -1,14 +1,14 @@
 <div id="telegram-tab" class="tab-pane" role="tabpanel">
     <div id="telegram-tab-wrapper">
         <div class="tab-header">
-            <h2> <?php _e(' Telegram Bot Settings', 'rivoforms'); ?> </h2>                    
+            <h2> <?php esc_html_e(' Telegram Bot Settings', 'rivoforms'); ?> </h2>                    
         </div>       
 
         <div class="rft-inner-tab-content">
             <div id="tm-bot" class="tab-pane-inner">                        
                 <form class="rft-form tm-bot-form" action="">                
                     <div id="tm-bot-notices"></div>
-                    <p class="description"><?php _e('Please, provide correct info', 'rivoforms'); ?></p>
+                    <p class="description"><?php esc_html_e('Please, provide correct info', 'rivoforms'); ?></p>
                     <div class="form-group">
                         <div class="rft-input-group"> 
                             <label for="tm_bot_token">Token</label>
@@ -23,7 +23,7 @@
                             <span class="small gray">.../getUpdates<span>
                         </div>                     
                         <div class="rft-input-group textarea-input-group mt-20">                           
-                            <button class="button button-secondary tm_bot_test" data-action="sendMessage"><?php _e('Test Message', 'rivoforms'); ?></button>
+                            <button class="button button-secondary tm_bot_test" data-action="sendMessage"><?php esc_html_e('Test Message', 'rivoforms'); ?></button>
                         </div>  
                     </div>
 

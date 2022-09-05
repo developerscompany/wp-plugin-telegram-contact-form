@@ -2,7 +2,7 @@
     <div id="integrations-general-tab-wrapper">
         
         <div class="tab-header">
-            <h2><?php _e('Contact Form 7 settings', 'rivoforms'); ?></h2>                   
+            <h2><?php esc_html_e('Contact Form 7 settings', 'rivoforms'); ?></h2>                   
         </div>
 
         <div id="integr-wpcf7" class="tab-pane-inner" role="tabpanel">
@@ -51,13 +51,13 @@
                     </strong>
                 <?php } ?>
 
-                    <h4><?php _e('Prevent emails', 'rivoforms'); ?></h4>
-                    <p class="description"><?php _e('Send only to telegram', 'rivoforms'); ?></p>
+                    <h4><?php esc_html_e('Prevent emails', 'rivoforms'); ?></h4>
+                    <p class="description"><?php esc_html_e('Send only to telegram', 'rivoforms'); ?></p>
                     <div class="form-group">
                         <div class="rft-input-group"> 
                             <?php $wpcf7_prevent_email = self::$wpcf7_settings['prevent_email'] == "true" ? 'checked' : ''; ?>
                             <input type="checkbox" class="" id="wpcf7_prevent_email" name="wpcf7_prevent_email" <?php echo $wpcf7_prevent_email; ?> >
-                            <label for="wpcf7_prevent_email"><?php _e('Prevent emails', 'rivoforms'); ?></label>
+                            <label for="wpcf7_prevent_email"><?php esc_html_e('Prevent emails', 'rivoforms'); ?></label>
                         </div> 
                     </div>
 

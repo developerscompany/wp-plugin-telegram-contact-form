@@ -2,7 +2,7 @@
     <div id="integrations-tab-wrapper">
 
         <div class="tab-header">
-            <h2><?php _e('Choose integrations', 'rivoforms'); ?></h2>          
+            <h2><?php esc_html_e('Choose integrations', 'rivoforms'); ?></h2>          
         </div>
     
         <div class="rft-inner-tab-content" >
@@ -19,7 +19,7 @@
                         <div class="rft-input-group">
                             <input type="radio" id="default_emails" name="use_integrations" value="false" <?php echo $default_emails_checked; ?>>
                             <label for="default_emails">
-                                <?php _e('All WordPress Emails', 'rivoforms'); ?>
+                                <?php esc_html_e('All WordPress Emails', 'rivoforms'); ?>
                             </label>
                             <p class="description">Send telegram notice when any kind of wordpress email is sent.</p>
                         </div>
@@ -27,7 +27,7 @@
                             <input type="radio" id="mod_emails"
                             name="use_integrations" value="true" <?php echo $mod_emails_checked; ?> >
                             <label for="mod_emails">
-                                <?php _e('Select Form Integrations', 'rivoforms'); ?>
+                                <?php esc_html_e('Select Form Integrations', 'rivoforms'); ?>
                             </label>
                             <p class="description">Send telegram notice only for selected integrations.</p>
                         </div>

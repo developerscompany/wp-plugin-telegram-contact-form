@@ -2,19 +2,19 @@
     <div id="integrations-general-tab-wrapper">
         
         <div class="tab-header">
-            <h2><?php _e('Woocommerce Emails Notifications', 'rivoforms'); ?> </h2>               
+            <h2><?php esc_html_e('Woocommerce Emails Notifications', 'rivoforms'); ?> </h2>               
         </div>
 
         <div id="integr-default" class="tab-pane-inner">                        
             <form  class="rft-form">
 
-                <h4><?php _e('Prevent emails', 'rivoforms'); ?></h4>
-                <p class="description"><?php _e('Send only to telegram', 'rivoforms'); ?></p>
+                <h4><?php esc_html_e('Prevent emails', 'rivoforms'); ?></h4>
+                <p class="description"><?php esc_html_e('Send only to telegram', 'rivoforms'); ?></p>
                 <div class="form-group">
                     <div class="rft-input-group"> 
                         <?php $wc_prevent_email = self::$wc_settings['prevent_email'] == "true" ? 'checked' : ''; ?>
                         <input type="checkbox" class="" id="wc_prevent_email" name="wc_prevent_email" <?php echo $wc_prevent_email; ?> >
-                        <label for="wc_prevent_email"><?php _e('Prevent emails', 'rivoforms'); ?></label>
+                        <label for="wc_prevent_email"><?php esc_html_e('Prevent emails', 'rivoforms'); ?></label>
                     </div> 
                 </div>
 
