@@ -11,7 +11,7 @@
             <div id="general-about" class="tab-pane-inner" role="tabpanel"> 
                 
                 <form class="rft-form" >
-                    <p class="description">Comming Soon</p>
+                    <p class="description"><?php esc_html_e('Comming Soon', 'rivoforms'); ?></p>
                     <pre>get_settings
                         <?php var_dump( self::$settings->get_settings() ); ?>
                     </pre>

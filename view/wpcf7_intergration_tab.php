@@ -17,9 +17,9 @@
 
                 <?php if (  count( $wpcf->get_registered_forms() ) > 0 ) { ?>                
 
-                    <h4>Choose forms to watch</h4>    
+                    <h4><?php esc_html_e('Choose forms to watch', 'rivoforms'); ?></h4>    
 
-                    <p class="description">Telegram message will be send only when selected forms are submited</p>
+                    <p class="description"><?php esc_html_e('Telegram message will be send only when selected forms are submited.', 'rivoforms'); ?></p>
                     <div class="form-group">
                         <?php foreach ($wpcf_forms as $form) { 
                             if (in_array( $form['id'], $wpcf->get_used_forms() )){
@@ -47,7 +47,7 @@
 
                 <?php } else { ?>
                     <strong>
-                        YOU DON'T HAVE ANY ACTIVE CONTACT-FORM-7 FORMS 
+                        <?php esc_html_e('YOU DON\'T HAVE ANY ACTIVE CONTACT-FORM-7 FORMS', 'rivoforms'); ?> 
                     </strong>
                 <?php } ?>
 
@@ -62,7 +62,7 @@
                     </div>
 
                     <div class="rft-submit-wrap">
-                        <button class="rft-submit button button-primary" style="margin-right:6px">Save Settings</button>
+                        <button class="rft-submit button button-primary" style="margin-right:6px"><?php esc_html_e('Save Settings', 'rivoforms'); ?></button>
                     </div>
                     
                 </form>

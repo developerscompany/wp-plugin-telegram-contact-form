@@ -18,13 +18,13 @@
                     </div> 
                 </div>
 
-                <p class="description">Comming Soon</p>                
+                <p class="description"><?php esc_html_e('Comming Soon', 'rivoforms'); ?></p>                
                 <pre>
                     <?php var_dump( self::$settings->get_active_mods() ); ?>
                 </pre>
 
                 <div class="rft-submit-wrap">
-                    <button class="rft-submit button button-primary" style="margin-right:6px">Save Settings</button>
+                    <button class="rft-submit button button-primary" style="margin-right:6px"><?php esc_html_e('Save Settings', 'rivoforms'); ?></button>
                 </div>
             </form>
         </div>

@@ -12,7 +12,7 @@
                     <p class="description"><?php esc_html_e('Message before form data', 'rivoforms'); ?></p>
                     <div class="form-group">
                         <div class="rft-input-group textarea-input-group">
-                            <textarea  class="" id="tm_bot_msg_before" name="tm_bot_msg_before" value="<?php echo self::$tm_bot_settings['msg_text_before'] ?>"><?php echo self::$tm_bot_settings['msg_text_before'] ?></textarea>                            
+                            <textarea  class="" id="tm_bot_msg_before" name="tm_bot_msg_before" value="<?php echo esc_html(self::$tm_bot_settings['msg_text_before']); ?>"><?php echo esc_html(self::$tm_bot_settings['msg_text_before']); ?></textarea>                            
                         </div>  
                     </div>                     
 
@@ -31,9 +31,7 @@
                             <div class="id"><?php echo $input['id'] ?>.</div>
                            
                             <div class="text-format">
-                                <button class="btn-format rft-active-format <?php if($input['active'] == "true"){ echo 'selected'; } ?>" >
-                                    0
-                                </button>
+                                <button class="btn-format rft-active-format <?php if($input['active'] == "true"){ echo 'selected'; } ?>" >0</button>
                                 <input type="hidden" name="rft-active-format-value" value="<?php echo $input['active']; ?>">  
                             </div>
                             
@@ -74,7 +72,7 @@
                     <p class="description"><?php esc_html_e('Message after form data', 'rivoforms'); ?></p>
                     <div class="form-group">
                         <div class="rft-input-group textarea-input-group">
-                            <textarea  class="" id="tm_bot_msg_after" name="tm_bot_msg_after" value="<?php echo self::$tm_bot_settings['msg_text_after'] ?>"><?php echo self::$tm_bot_settings['msg_text_after'] ?></textarea>                            
+                            <textarea  class="" id="tm_bot_msg_after" name="tm_bot_msg_after" value="<?php echo self::$tm_bot_settings['msg_text_after'] ?>"><?php echo esc_html(self::$tm_bot_settings['msg_text_after']); ?></textarea>                            
                         </div>  
                     </div>  
 
@@ -90,7 +88,7 @@
                     </div> 
 
                     <div class="rft-submit-wrap">
-                        <button class="rft-submit button button-primary" style="margin-right:6px">Save Settings</button>
+                        <button class="rft-submit button button-primary" style="margin-right:6px"><?php esc_html_e('Save Settings', 'rivoforms'); ?></button>
                     </div>
                 </form>
 

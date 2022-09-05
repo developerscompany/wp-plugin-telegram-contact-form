@@ -13,13 +13,13 @@
                         <div class="rft-input-group"> 
                             <label for="tm_bot_token">Token</label>
                             <input type="text" class="" id="tm_bot_token" name="tm_bot_token" value="<?php echo self::$tm_bot_settings['token'] ?>">
-                            <button class="button button-secondary tm_bot_test" data-action="getMe">Test Token</button>
+                            <button class="button button-secondary tm_bot_test" data-action="getMe"><?php esc_html_e('Test Token', 'rivoforms'); ?></button>
                             <span class="small gray">.../getMe<span>
                         </div> 
                         <div class="rft-input-group"> 
                             <label for="tm_bot_chat_id">Chat_id</label>
                             <input type="text" class="" id="tm_bot_chat_id" name="tm_bot_chat_id" value="<?php echo self::$tm_bot_settings['chat_id'] ?>">
-                            <button class="button button-secondary tm_bot_test" data-action="getUpdates">Get</button>
+                            <button class="button button-secondary tm_bot_test" data-action="getUpdates"><?php esc_html_e('Get', 'rivoforms'); ?></button>
                             <span class="small gray">.../getUpdates<span>
                         </div>                     
                         <div class="rft-input-group textarea-input-group mt-20">                           
@@ -28,7 +28,7 @@
                     </div>
 
                     <div class="rft-submit-wrap mt-0">
-                        <button class="rft-submit button button-primary" style="margin-right:6px">Save Settings</button>
+                        <button class="rft-submit button button-primary" style="margin-right:6px"><?php esc_html_e('Save Settings', 'rivoforms'); ?></button>
                     </div>                                       
                     
                     

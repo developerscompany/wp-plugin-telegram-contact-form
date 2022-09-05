@@ -21,7 +21,7 @@
                             <label for="default_emails">
                                 <?php esc_html_e('All WordPress Emails', 'rivoforms'); ?>
                             </label>
-                            <p class="description">Send telegram notice when any kind of wordpress email is sent.</p>
+                            <p class="description"><?php esc_html_e('Send telegram notice when any kind of wordpress email is sent.', 'rivoforms'); ?></p>
                         </div>
                         <div class="rft-input-group">
                             <input type="radio" id="mod_emails"
@@ -29,7 +29,7 @@
                             <label for="mod_emails">
                                 <?php esc_html_e('Select Form Integrations', 'rivoforms'); ?>
                             </label>
-                            <p class="description">Send telegram notice only for selected integrations.</p>
+                            <p class="description"><?php esc_html_e('Send telegram notice only for selected integrations.', 'rivoforms'); ?></p>
                         </div>
                     </div>
 
@@ -49,7 +49,7 @@
                             <?php echo $checked; ?> 
                             >
                             <label for="<?php echo $mod_name; ?>"><?php echo $label; ?></label>
-                            <p class="description"><?php echo $description; ?></p>
+                            <p class="description"><?php esc_html_e($description, 'rivoforms'); ?></p>
                         </div>
                         <?php } ?>
                     </div>
