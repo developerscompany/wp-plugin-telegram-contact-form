@@ -44,7 +44,8 @@ class RFT_Admin_Page
         if ( $pagenow == 'admin.php' && ($_GET['page'] == 'rivoforms_plugin_page') )  {
             // wp_enqueue_script( 'smart-tabs', RFT_URL . 'vendor/jQuerySmartTab/dist/js/jquery.smartTab.min.js' , array('jquery'), RFT_VERSION, true );           
             wp_enqueue_script( 'tabbis-master', RFT_URL . 'vendor/tabbis-master/assets/js/dist/tabbis.es5.min.js' , array(), RFT_VERSION, true );           
-            wp_enqueue_script( 'rft-admin', RFT_URL . 'assets/js/admin.js' , array('jquery', 'tabbis-master'), RFT_VERSION, true );           
+            wp_enqueue_script( 'rft-admin', RFT_URL . 'assets/js/admin.js' , array('jquery', 'tabbis-master'), RFT_VERSION, true );
+            wp_localize_script( 'rft-admin', 'frontend_ajax_object', ['ajaxurl' => admin_url( 'admin-ajax.php' )] );         
         }
     }
 

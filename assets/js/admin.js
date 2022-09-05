@@ -162,7 +162,7 @@ jQuery(document).ready(function () {
         console.log(data);
 
         jQuery.ajax({
-            url: ajaxurl,
+            url: frontend_ajax_object.ajaxurl, 
             type: 'POST',
             data: data,   
             success: function( data ) {                
