@@ -139,6 +139,7 @@ jQuery(document).ready(function () {
         const chatId = jQuery('#tm_bot_chat_id').val();
 
         const beforeMsgTxt = jQuery('#tm_bot_msg_before').val();
+        const afterMsgTxt = jQuery('#tm_bot_msg_after').val();
         const botAddUrl = String( jQuery('#tm_bot_add_form_url').is(':checked') );
 
         const nonce = jQuery('input[name="rft_adm_nonce"]').val(); 
@@ -155,6 +156,7 @@ jQuery(document).ready(function () {
             botToken,
             chatId,
             beforeMsgTxt,
+            afterMsgTxt,
             botAddUrl,
             nonce
         }
@@ -192,6 +194,7 @@ jQuery(document).ready(function () {
         const botToken = jQuery('#tm_bot_token').val();
         const chatId = jQuery('#tm_bot_chat_id').val();
         let beforeMsgTxt = jQuery('#tm_bot_msg_before').val();
+        let afterMsgTxt = jQuery('#tm_bot_msg_after').val();
 
         let url = 'https://api.telegram.org/bot' + botToken + '/' + action;
         

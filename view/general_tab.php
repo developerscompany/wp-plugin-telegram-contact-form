@@ -11,22 +11,7 @@
             <div id="general-about" class="tab-pane-inner" role="tabpanel"> 
                 
                 <form class="rft-form" >
-                    <p class="description"><?php esc_html_e('Comming Soon', 'rivoforms'); ?></p>
-                    <pre>get_settings
-                        <?php var_dump( self::$settings->get_settings() ); ?>
-                    </pre>
-                    <pre>get_wpcf7_settings
-                        <?php var_dump( self::$settings->get_wpcf7_settings() ); ?>
-                    </pre>
-                    <pre>get_wc_settings
-                        <?php var_dump( self::$settings->get_wc_settings() ); ?>
-                    </pre>
-                    <pre>get_wp_mail_settings
-                        <?php var_dump( self::$settings->get_wp_mail_settings() ); ?>
-                    </pre>
-                    <pre>get_input_settings
-                        <?php var_dump( self::$settings->get_input_settings() ); ?>
-                    </pre>
+                    <p class="description"><?php esc_html_e('Coming Soon', 'rivoforms'); ?></p>
                 </form>
             </div>
 

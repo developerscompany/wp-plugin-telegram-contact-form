@@ -57,7 +57,22 @@ class RFT_Bot_Sender
         $response = file_get_contents("https://api.telegram.org/bot$apiToken/sendMessage?" . http_build_query($data) );
         
     }
-    
+
+
+    public function sendPlain( $message, $sender ){
+
+        $apiToken = self::$bot_settings['token'];
+        $data = [
+            'chat_id' => self::$bot_settings['chat_id'],
+            'text' => $message,
+            'parse_mode' => 'html',
+            'disable_web_page_preview' => true
+        ];
+
+        $response = file_get_contents("https://api.telegram.org/bot$apiToken/sendMessage?" . http_build_query($data) );
+
+    }
+
 
     public static function parse_message_text( $data ){
 

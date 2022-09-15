@@ -44,7 +44,11 @@ class RFT_Plugin
                 add_action("wpcf7_before_send_mail", array($Wpcf7, 'before_send_mail') );            
             }
         }
-                
+
+        $woo = new RFT_Woocommerce();
+        add_action('woocommerce_checkout_order_processed', array($woo, 'send_new_order_telegram'));
+        add_action('woocommerce_order_status_cancelled', array($woo, 'send_cancelled_order_telegram'));
+
 
         $rft_ajax = RFT_Ajax::get_instance( self::$settings );
         add_action('wp_ajax_rft_save_settings_admin_page', array($rft_ajax, 'rft_save_settings_admin_page'));
@@ -67,7 +71,8 @@ class RFT_Plugin
             'RFT_DB' =>                 RFT_DS . "includes" . RFT_DS . "db-helper.class.php",   
             'RFT_View' =>               RFT_DS . "view" . RFT_DS . "view.class.php",           
             'RFT_WPCF7' =>              RFT_DS . "integrations" . RFT_DS . "contact-form-7" . RFT_DS . "wpcf7.class.php",   
-            'RFT_WP_Mail' =>            RFT_DS . "integrations" . RFT_DS . "wp-mail" . RFT_DS . "wp-mail.class.php", 
+            'RFT_Woocommerce' =>              RFT_DS . "integrations" . RFT_DS . "woocommerce" . RFT_DS . "woocommerce.class.php",
+            'RFT_WP_Mail' =>            RFT_DS . "integrations" . RFT_DS . "wp-mail" . RFT_DS . "wp-mail.class.php",
         );
         foreach ($files as $file) {            
             if (file_exists(dirname(dirname(__FILE__)) . $file)) {

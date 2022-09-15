@@ -28,7 +28,7 @@ class RFT_Ajax
 
         if ( !isset( $_POST['nonce'] ) || !wp_verify_nonce( $_POST['nonce'], 'rft_adm_nonce_action' ) ) {
             wp_die('nonce error');
-        } 
+        }
 
         $msg = array();
         $errors = array();
@@ -89,7 +89,6 @@ class RFT_Ajax
             }
         }
 
-        
         if ( isset( $_POST['beforeMsgTxt']) ){             
             $beforeMsgTxt = $_POST['beforeMsgTxt'];           
             self::$settings->update_sender_option( 'tm_bot', 'msg_text_before', $beforeMsgTxt );                           
