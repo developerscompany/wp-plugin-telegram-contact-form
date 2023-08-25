@@ -1,0 +1,35 @@
+{
+    "name": "rivo/wordpress-plugin-telegram",
+    "autoload": {
+        "files": [
+            "includes/class-main.php",
+            "includes/class-assets.php",
+            "includes/class-bot.php",
+            "includes/class-utilities.php",
+            "includes/admin-pages/class-admin-pages.php",
+            "includes/admin-pages/class-admin-pages-about.php",
+            "includes/admin-pages/class-admin-pages-bot.php",
+            "includes/admin-pages/class-admin-pages-integrations.php",
+            "includes/admin-pages/class-admin-pages-notifications.php",
+            "includes/settings/class-settings.php",
+            "includes/settings/class-settings-base.php",
+            "includes/settings/class-settings-bot.php",
+            "includes/settings/class-settings-integrations.php",
+            "includes/settings/class-settings-notifications.php",
+            "includes/integrations/class-integrations.php",
+            "includes/integrations/class-integrations-contact-form.php",
+            "includes/integrations/class-integrations-woocommerce.php"
+        ]
+    },
+    "authors": [
+        {
+            "name": "Alexey Geyvan, RivoAgency",
+            "email": "sales@rivo.agency"
+        }
+    ],
+    "config": {
+        "vendor-dir": "lib"
+    },
+    "require": {
+    }
+}
