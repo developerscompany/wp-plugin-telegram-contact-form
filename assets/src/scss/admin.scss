@@ -26,12 +26,67 @@ $colorLightGray: #E9E9E9;
         padding: 12px $padding;
 
         a {
-            padding: 11px;
+            font-size: 15px;
             text-align: center;
+            color: #000000;
+            cursor: default;
+            margin: 0 3px;
+            padding: 8.5px 10px 8.5px 30px!important;
+            min-width: 180px;
+            float: left;
+            position: relative;
+            background-color: #d9e3f7;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            transition: background-color 0.2s ease;
+            text-decoration: none;
+            font-weight: 600;
+
+            &:hover{
+                cursor: pointer;
+            }
 
             &.active {
-                background-color: $colorLightGray;
+                color: #fff;
+                background-color: #23468c;
             }
+
+            &.active:after {
+                border-left: 17px solid #23468c;
+            }
+
+            &:after,&:before {
+                content: " ";
+                position: absolute;
+                top: 0;
+                right: -17px;
+                width: 0;
+                height: 0;
+                border-top: 19px solid transparent;
+                border-bottom: 17px solid transparent;
+                border-left: 17px solid #d9e3f7;
+                z-index: 2;
+                transition: border-color 0.2s ease;
+            }
+
+            &:before{
+                right: auto;
+                left: 0;
+                border-left: 17px solid #fff;
+                z-index: 0;
+            }
+
+            &:first-child:before {
+                border: none;
+            }
+
+            &:first-child {
+                border-top-left-radius: 4px;
+                border-bottom-left-radius: 4px;
+            }
+
         }
 
         > * {
@@ -58,7 +113,32 @@ $colorLightGray: #E9E9E9;
 
     .btn {
         border-radius: $borderRadius;
+        padding: 15px 16px;
+        font-size: 15px;
+        font-weight: 600;
+        text-decoration: none;
+
+        &.rivo-rate{
+            border: 1px solid #1B2023;
+            color: #1B2023;
+            transition: all .3s ease;
+            background-size: 200% 100%;
+            background-position: right;
+            background-repeat: none;
+            background-image: linear-gradient(to right, #1D81AE , #2D93BF, #1E9C9C);
+
+            &:hover{
+                color: #ffffff;
+                background-position: left;
+            }
+        }
+
+        &.rivo-start{
+            color: #ffffff;
+            background-image: linear-gradient(to right, #1D81AE , #2D93BF, #1E9C9C);
+        }
     }
+
 }
 
 
@@ -308,3 +388,94 @@ $colorLightGray: #E9E9E9;
 .pt-5 {
     padding-top: 5px !important;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//nav a{
+//    font-size: 14px;
+//    text-align: center;
+//    color: #666;
+//    cursor: default;
+//    margin: 0 3px;
+//    padding: 8.5px 10px 8.5px 30px!important;
+//    min-width: 180px;
+//    float: left;
+//    position: relative;
+//    background-color: #d9e3f7;
+//    -webkit-user-select: none;
+//    -moz-user-select: none;
+//    -ms-user-select: none;
+//    user-select: none;
+//    transition: background-color 0.2s ease;
+//}
+//
+//nav a:after,
+//nav a:before {
+//    content: " ";
+//    position: absolute;
+//    top: 0;
+//    right: -17px;
+//    width: 0;
+//    height: 0;
+//    border-top: 19px solid transparent;
+//    border-bottom: 17px solid transparent;
+//    border-left: 17px solid #d9e3f7;
+//    z-index: 2;
+//    transition: border-color 0.2s ease;
+//}
+
+//nav a:before {
+//    right: auto;
+//    left: 0;
+//    border-left: 17px solid #fff;
+//    z-index: 0;
+//}
+
+//nav a:first-child:before {
+//    border: none;
+//}
+
+//nav a:first-child {
+//    border-top-left-radius: 4px;
+//    border-bottom-left-radius: 4px;
+//}
+
+nav a span {
+    position: relative;
+}
+
+nav a span:before {
+    opacity: 0;
+    content: "✔";
+    position: absolute;
+    top: -2px;
+    left: -20px;
+}
+
+nav a.done span:before {
+    opacity: 1;
+    -webkit-transition: opacity 0.3s ease 0.5s;
+    -moz-transition: opacity 0.3s ease 0.5s;
+    -ms-transition: opacity 0.3s ease 0.5s;
+    transition: opacity 0.3s ease 0.5s;
+}
+
+//nav a.active {
+//    color: #fff;
+//    background-color: #23468c;
+//}
+
+//nav a.active:after {
+//    border-left: 17px solid #23468c;
+//}

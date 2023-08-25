@@ -1,0 +1,1 @@
+{"version":3,"file":"/js/admin-notifications.js","mappings":";;;;;AAAAA,QAAQ,CAACC,gBAAgB,CAAC,kBAAkB,EAAE,YAAM;EAChD;AAAA,CACH,CAAC,C","sources":["webpack://Gloria/./assets/src/js/admin-notifications.js"],"sourcesContent":["document.addEventListener('DOMContentLoaded', () => {\r\n    // alert('notifications');\r\n})"],"names":["document","addEventListener"],"sourceRoot":""}
