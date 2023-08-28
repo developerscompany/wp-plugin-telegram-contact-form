@@ -23,7 +23,13 @@ class RFT_Bot
         }
 
         foreach ($json['result'] as $update) {
-            $chat_ids[] = $update['message']['chat']['id'];
+            if(isset($update['message'])) {
+                $chat_ids[] = $update['message']['chat']['id'];
+            }
+
+            if(isset($update['my_chat_member'])) {
+                $chat_ids[] = $update['my_chat_member']['chat']['id'];
+            }
         }
 
         $chat_ids = array_filter($chat_ids);
@@ -46,7 +52,15 @@ class RFT_Bot
 
         $json = self::request('getChat', ['chat_id' => $chat_id]);
 
-        return $json ? $json['result']['title'] : null;
+        if(isset($json['result']['title'])) {
+            return $json['result']['title'];
+        }
+
+        if(isset($json['result']['first_name'])) {
+            return sprintf('%s %s', $json['result']['username'], $json['result']['first_name']);
+        }
+
+        return null;
     }
 
     public static function get_token_from_settings()
