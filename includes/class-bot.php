@@ -36,7 +36,7 @@ class RFT_Bot
 
         foreach ($chat_ids as $chat_id) {
             if($chat_info = self::get_chat_name($chat_id)) {
-                $chats[$chat_id] = $chat_info;
+                $chats[$chat_id] = ['chat_id' => $chat_id, 'chat_name' => $chat_info];
             }
         }
 

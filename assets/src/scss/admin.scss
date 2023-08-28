@@ -100,6 +100,27 @@ $colorLightGray: #E9E9E9;
         padding: $padding;
         background-color: white;
         border-radius: $borderRadius;
+
+        & .content .additional-information p{
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        & .content .message-field{
+            margin-top: 10px;
+        }
+
+        & .content .message-field.error-field{
+            color: red;
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        & .content .message-field.apply-field{
+            color: green;
+            font-size: 15px;
+            font-weight: 600;
+        }
     }
 
     .footer {
@@ -121,15 +142,15 @@ $colorLightGray: #E9E9E9;
         &.rivo-rate{
             border: 1px solid #1B2023;
             color: #1B2023;
-            transition: all .3s ease;
+            //transition: all .3s ease;
             background-size: 200% 100%;
             background-position: right;
             background-repeat: none;
-            background-image: linear-gradient(to right, #1D81AE , #2D93BF, #1E9C9C);
 
             &:hover{
                 color: #ffffff;
                 background-position: left;
+                background-image: linear-gradient(to right, #1D81AE , #2D93BF, #1E9C9C);
             }
         }
 
@@ -141,6 +162,66 @@ $colorLightGray: #E9E9E9;
 
 }
 
+input.input-error,
+input.input-error:focus{
+    outline: 1px solid red;
+    box-shadow: unset;
+}
+
+.token-field{
+    display: flex;
+    gap: 10px;
+}
+
+#tm_bot_token{
+    width: 100%;
+    height: 48px;
+    border-radius: 8px;
+    border: 1px solid #E9E9E9;
+    padding: 15px 16px;
+    font-family: Gilroy;
+    font-size: 15px;
+    font-weight: 500;
+    color: #000000;
+}
+
+#tm_bot_token::placeholder{
+    color: #1B202380;
+}
+
+.aply-tocken-button{
+    height: 48px;
+    width: 116px;
+    border-radius: 8px;
+    border: 1px solid #1F64A5;
+    padding: 15px 16px 15px 16px;
+    font-family: Gilroy;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.chats-list{
+    margin-top: 24px;
+    border-top: 1px solid #EFEFEF;
+    padding-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    & p{
+        font-family: Gilroy;
+        font-size: 15px;
+        font-weight: 600;
+        margin: 0;
+    }
+}
+
+.isDisabled{
+    color: currentColor;
+    cursor: not-allowed;
+    opacity: 0.5;
+    text-decoration: none;
+}
 
 
 .rft{
