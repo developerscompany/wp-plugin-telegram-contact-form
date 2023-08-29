@@ -27,7 +27,7 @@ if(empty($bot_settings['token'])){
                        echo '<p>Choose chat</p>';
                        foreach (RFT_Bot::get_chats_list() as $chat_list_item){ ?>
                            <div class="check-chat">
-                               <input type="radio" id="<?php echo $chat_list_item['chat_id']; ?>" name="fav_language" value="<?php echo $chat_list_item['chat_name']; ?>" <?php echo $bot_settings['chat_ids'][0] == $chat_list_item['chat_id'] ? "checked": ""?>>
+                               <input type="radio" id="<?php echo $chat_list_item['chat_id']; ?>" name="single_chat_id" value="<?php echo $chat_list_item['chat_name']; ?>" <?php echo $bot_settings['chat_ids'][0] == $chat_list_item['chat_id'] ? "checked": ""?>>
                                <label for="<?php echo $chat_list_item['chat_id']; ?>"><?php echo $chat_list_item['chat_name']; ?></label>
                            </div>
                        <?php }

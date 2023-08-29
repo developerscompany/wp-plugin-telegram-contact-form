@@ -64,18 +64,18 @@ jQuery(document).ready(function ($) {
       }
     });
   });
-  $("body").on("change", "input[name='fav_language']", function () {
-    // console.log($('input[name="fav_language"]:checked').attr('id'));
+  $("body").on("change", "input[name='single_chat_id']", function () {
+    // console.log($('input[name="single_chat_id"]:checked').attr('id'));
     $("#second_step_button").removeClass('isDisabled');
   });
-  if ($('input[name="fav_language"]:checked').length === 0) {
+  if ($('input[name="single_chat_id"]:checked').length === 0) {
     $("#second_step_button").addClass('isDisabled');
   }
   $("body").on("click", "#second_step_button", function (e) {
     if ($(this).hasClass('isDisabled')) {
       e.preventDefault();
     } else {
-      var chatId = $('input[name="fav_language"]:checked').attr('id');
+      var chatId = $('input[name="single_chat_id"]:checked').attr('id');
       var tokenId = $("#tm_bot_token").val();
       jQuery.ajax({
         url: '/wp-admin/admin-ajax.php',
