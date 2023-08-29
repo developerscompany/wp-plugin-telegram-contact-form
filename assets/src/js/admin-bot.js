@@ -1,4 +1,6 @@
 jQuery(document).ready(function($) {
+    const buttonNext = $("#second_step_button");
+
     if($("#tm_bot_token").val().length < 25){
         $('.aply-tocken-button').prop("disabled", true);
     } else {
@@ -13,6 +15,7 @@ jQuery(document).ready(function($) {
            messageField.removeClass('apply-field');
            messageField.addClass('error-field');
            inputField.addClass('input-error');
+           buttonNext.addClass('isDisabled');
            $('.aply-tocken-button').prop("disabled", true);
        } else {
            messageField.text('');
@@ -33,7 +36,6 @@ jQuery(document).ready(function($) {
             },
             success: function (data) {
                 const messageField = $('.message-field');
-                const buttonNext = $("#second_step_button");
                 let json = JSON.parse(data);
                 // console.log(json['chats_list']);
                 if(json['request'] === 'token_successfull'){
