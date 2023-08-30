@@ -167,6 +167,98 @@ p {
   margin-top: 6px;
   display: block;
 }
+.rft-plugin-tm .container .content .select-global-form {
+  position: relative;
+}
+.rft-plugin-tm .container .content .select-global-form label {
+  font-family: Gilroy;
+  font-size: 11px;
+  font-weight: 500;
+  background: #ffffff;
+  position: absolute;
+  top: -10px;
+  left: 10px;
+}
+.rft-plugin-tm .container .content .select-global-form select {
+  font-family: Gilroy;
+  width: 100%;
+  max-width: 100%;
+  padding: 8px 16px;
+  border: 1px solid #E9E9E9;
+  border-radius: 8px;
+  font-size: 15px;
+  -moz-appearance: none;
+       appearance: none;
+  -webkit-appearance: none;
+  font-weight: 500;
+  background-image: linear-gradient(45deg, transparent 50%, grey 50%), linear-gradient(135deg, grey 50%, transparent 50%);
+  background-position: calc(100% - 19.66px) 48%, calc(100% - 15px) 48%, 100% 0;
+  background-size: 5px 5px, 5px 5px, 2.5em 2.5em;
+  background-repeat: no-repeat;
+}
+.rft-plugin-tm .container .content .select-global-form select:hover {
+  background-image: linear-gradient(45deg, grey 50%, transparent 50%), linear-gradient(135deg, transparent 50%, grey 50%);
+  background-position: calc(100% - 15.66px) 48%, calc(100% - 20px) 48%, 100% 0;
+  background-size: 5px 5px, 5px 5px, 2.5em 2.5em;
+  background-repeat: no-repeat;
+  outline: 0;
+}
+.rft-plugin-tm .container .content .select-global-form select:focus {
+  border: 1px solid #FCBE66;
+  box-shadow: unset;
+}
+.rft-plugin-tm .container .content .global-form-settings {
+  border-top: 1px solid #EFEFEF;
+  margin-top: 24px;
+  padding-top: 24px;
+}
+.rft-plugin-tm .container .content .global-form-settings .form-message, .rft-plugin-tm .container .content .global-form-settings .form-message-after-successful {
+  position: relative;
+  margin-bottom: 24px;
+}
+.rft-plugin-tm .container .content .global-form-settings .form-message input, .rft-plugin-tm .container .content .global-form-settings .form-message-after-successful input {
+  font-family: Gilroy;
+  width: 100%;
+  max-width: 100%;
+  padding: 8px 16px;
+  border: 1px solid #E9E9E9;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 500;
+}
+.rft-plugin-tm .container .content .global-form-settings .form-message input:focus, .rft-plugin-tm .container .content .global-form-settings .form-message-after-successful input:focus {
+  border: 1px solid #FCBE66;
+  box-shadow: unset;
+}
+.rft-plugin-tm .container .content .global-form-settings .form-message label, .rft-plugin-tm .container .content .global-form-settings .form-message-after-successful label {
+  font-family: Gilroy;
+  font-size: 11px;
+  font-weight: 500;
+  background: #ffffff;
+  position: absolute;
+  top: -10px;
+  left: 10px;
+  padding: 0 3px;
+}
+.rft-plugin-tm .container .content .global-form-settings .modify-inputs {
+  margin-bottom: 24px;
+}
+.rft-plugin-tm .container .content .global-form-settings .modify-inputs .rft-rename-group input, .rft-plugin-tm .container .content .global-form-settings .modify-inputs .rft-rename-group select, .rft-plugin-tm .container .content .global-form-settings .modify-inputs .rft-rename-group button {
+  border: 1px solid #E9E9E9;
+  border-radius: 8px;
+  padding: 8px 16px;
+}
+.rft-plugin-tm .container .content .global-form-settings .modify-inputs .rft-rename-group button {
+  height: 45px;
+  background: unset;
+  color: #1F64A5;
+  border: unset;
+  font-weight: 600;
+  cursor: pointer;
+}
+.rft-plugin-tm .container .content .global-form-settings .modify-inputs .rft-rename-group button.rft-bold-format, .rft-plugin-tm .container .content .global-form-settings .modify-inputs .rft-rename-group button.rft-italic-format {
+  border: 1px solid #1F64A5;
+}
 .rft-plugin-tm .footer {
   display: flex;
   justify-content: space-between;
@@ -366,9 +458,10 @@ input.input-error:focus {
 }
 .rft-rename-group {
   display: flex;
-  margin-bottom: 10px;
+  margin-bottom: 24px;
   flex-wrap: nowrap;
   align-items: center;
+  gap: 10px;
 }
 .rft-rename-group input, .rft-rename-group select {
   margin-left: 6px;

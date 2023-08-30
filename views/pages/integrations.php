@@ -46,7 +46,7 @@
            <div class="message-field error-field"></div>
        </div>
 
-        <?php var_dump(RFT_Settings_Integrations::get()); ?>
+<!--        --><?php //var_dump(RFT_Settings_Integrations::get()); ?>
 
         <div class="footer">
             <a href="<?= RFT_Admin_Pages::get_link(RFT_Admin_Pages_Bot::SLUG) ?>" class="btn rivo-rate"><?=  __('Preview step', RFT_TEXTDOMAIN) ?></a>
