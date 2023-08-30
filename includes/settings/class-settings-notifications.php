@@ -1,8 +1,8 @@
 <?php
 
-class RFT_Settings_Notifications extends RFT_Setting_Base
+class Rivo_WTS_Settings_Notifications extends Rivo_WTS_Setting_Base
 {
-    const OPTION_KEY = RFT_Main::PREFIX . 'settings-notifications';
+    const OPTION_KEY = Rivo_WTS_Main::PREFIX . 'settings-notifications';
     const DEFAULTS   = [
         "forms" => []
     ];

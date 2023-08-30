@@ -1,15 +1,29 @@
 <?php
 
-class RFT_Bot
+class Rivo_WTS_Bot
 {
-    const LAST_CHATS_OPTION_KEY = 'rtf-last-chats';
+    const LAST_CHATS_OPTION_KEY = Rivo_WTS_Main::PREFIX . 'last-chats';
 
     const ERROR_INVALID_TOKEN   = 'Invalid Token';
     const ERROR_REQUEST         = 'Request Error';
 
-    public static function send_message($chat_id = null, $text = null)
+    public static function send_message($chat_ids = [], $text = null)
     {
-        return self::request('sendMessage', compact('chat_id', 'text'));
+        !$chat_ids && $chat_ids = Rivo_WTS_Settings_Bot::get()['chat_ids'];
+
+        $result = [];
+        $parse_mode = 'html';
+        $disable_web_page_preview = true;
+
+        foreach ($chat_ids as $chat_id) {
+            try {
+                $result[] = self::request('sendMessage', compact('chat_id', 'text', 'parse_mode', 'disable_web_page_preview'));
+            } catch (Exception $e) {
+                //TODO: log to errors
+            }
+        }
+
+        return $result;
     }
 
     public static function get_chats_list()
@@ -35,13 +49,13 @@ class RFT_Bot
         $chat_ids = array_filter($chat_ids);
 
         foreach ($chat_ids as $chat_id) {
-            if($chat_info = self::get_chat_name($chat_id)) {
-                $chats[$chat_id] = ['chat_id' => $chat_id, 'chat_name' => $chat_info];
+            if($chat_name = self::get_chat_name($chat_id)) {
+                $chats[(string)$chat_id] = $chat_name;
             }
         }
 
         //prevent disappearing selected chat
-        return array_merge(get_option(self::LAST_CHATS_OPTION_KEY) ?: [], $chats);
+        return array_replace_recursive(get_option(self::LAST_CHATS_OPTION_KEY) ?: [], $chats);
     }
 
     public static function get_chat_name($chat_id = null)
@@ -65,7 +79,7 @@ class RFT_Bot
 
     public static function get_token_from_settings()
     {
-        return RFT_Settings_Bot::get()['token'];
+        return Rivo_WTS_Settings_Bot::get()['token'];
     }
 
     public static function get_me($forceToken = null)
@@ -78,7 +92,7 @@ class RFT_Bot
         $token = $forceToken ?? self::get_token_from_settings();
 
         if(!$token) {
-            throw new Exception(__(self::ERROR_INVALID_TOKEN, RFT_TEXTDOMAIN));
+            throw new Exception(__(self::ERROR_INVALID_TOKEN, Rivo_WTS_TEXTDOMAIN));
         }
 
         $url = sprintf('https://api.telegram.org/bot%s/%s', $token, $telegramAction);
@@ -93,13 +107,15 @@ class RFT_Bot
 
         $json = json_decode(wp_remote_retrieve_body($answer), 1);
 
-        if(is_admin()) {
-            if(is_wp_error($answer)) {
-                throw new Exception(sprintf('%s (%s)', __(self::ERROR_REQUEST, RFT_TEXTDOMAIN), $answer->get_error_message()));
-            }
+        if(is_wp_error($answer)) {
+            throw new Exception(sprintf('%s (%s)', __(self::ERROR_REQUEST, Rivo_WTS_TEXTDOMAIN), $answer->get_error_message()));
+        }
 
-            if(!isset($json['ok']) || !$json['ok']) {
-                throw new Exception(__(self::ERROR_INVALID_TOKEN, RFT_TEXTDOMAIN));
+        if(!isset($json['ok']) || !$json['ok']) {
+            if(isset($json['description'])) {
+                throw new Exception($json['description']);
+            } else {
+                throw new Exception(__(self::ERROR_INVALID_TOKEN, Rivo_WTS_TEXTDOMAIN));
             }
         }
 

@@ -2,9 +2,10 @@
     "name": "rivo/wordpress-plugin-telegram",
     "autoload": {
         "files": [
-            "includes/class-main.php",
             "includes/class-assets.php",
             "includes/class-bot.php",
+            "includes/class-formatting.php",
+            "includes/class-main.php",
             "includes/class-utilities.php",
             "includes/admin-pages/class-admin-pages.php",
             "includes/admin-pages/class-admin-pages-about.php",
@@ -17,6 +18,7 @@
             "includes/settings/class-settings-integrations.php",
             "includes/settings/class-settings-notifications.php",
             "includes/integrations/class-integrations.php",
+            "includes/integrations/class-integrations-all-mails.php",
             "includes/integrations/class-integrations-contact-form.php",
             "includes/integrations/class-integrations-woocommerce.php"
         ]

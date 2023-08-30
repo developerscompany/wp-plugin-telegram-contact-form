@@ -1,13 +1,11 @@
 <?php
 
-class RFT_Settings
+class Rivo_WTS_Settings
 {
     public static function init()
     {
-//        RFT_Settings_Bot::init();
-//        RFT_Settings_Integrations::init();
-//        RFT_Settings_Notifications::init();
+//        Rivo_WTS_Settings_Bot::init();
+//        Rivo_WTS_Settings_Integrations::init();
+//        Rivo_WTS_Settings_Notifications::init();
     }
-
-
 }

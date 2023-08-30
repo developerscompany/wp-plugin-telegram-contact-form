@@ -13,18 +13,18 @@ if (!defined('ABSPATH')) {
     exit;
 };
 
-if (!defined("RFT_PLUGIN_DIR")) {
-    define("RFT_PLUGIN_DIR", __DIR__);
+if (!defined("Rivo_WTS_PLUGIN_DIR")) {
+    define("Rivo_WTS_PLUGIN_DIR", __DIR__);
 }
-if (!defined("RFT_URL")) {
-    define('RFT_URL', plugin_dir_url(__FILE__));
+if (!defined("Rivo_WTS_URL")) {
+    define('Rivo_WTS_URL', plugin_dir_url(__FILE__));
 }
-if (!defined("RFT_TEXTDOMAIN")) {
-    define('RFT_TEXTDOMAIN', 'rivoforms');
+if (!defined("Rivo_WTS_TEXTDOMAIN")) {
+    define('Rivo_WTS_TEXTDOMAIN', 'rivo-wts');
 }
-if (!defined("RFT_VERSION")) {
-    define('RFT_VERSION', "1.0");
+if (!defined("Rivo_WTS_VERSION")) {
+    define('Rivo_WTS_VERSION', "1.0");
 }
 
 require __DIR__ . '/lib/autoload.php';
-RFT_Main::init();
+Rivo_WTS_Main::init();

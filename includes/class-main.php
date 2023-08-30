@@ -1,23 +1,17 @@
 <?php
 
-class RFT_Main
+class Rivo_WTS_Main
 {
-    const PREFIX = 'rft-';
+    const PREFIX = 'rivo-wts-';
 
     public static function init()
     {
-        RFT_Assets::init();
-        RFT_Admin_Pages::init();
-        RFT_Settings::init();
+        Rivo_WTS_Assets::init();
+        Rivo_WTS_Admin_Pages::init();
+        Rivo_WTS_Settings::init();
+        Rivo_WTS_Integrations::init();
 
-//        var_dump(RFT_Bot::get_me('2050004397:AAFxofedHlELG_uQ8YLvGDEJcI29zfmgzqI'));
-
-//        try {
-//            $a = RFT_Bot::send_message('-214862049', '777');
-//            $b = RFT_Bot::get_chats_list();
-//            $r = 9;
-//        } catch (Exception $e) {
-//            $a = 9;
-//        }
+//        $token = '6418062577:AAH9GnbK6e55NZ3cznEMWNzxMpXqcmF6pVo';
+//        $data['chat_id'] = '-214862049';
     }
 }

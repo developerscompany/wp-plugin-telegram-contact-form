@@ -1,6 +1,6 @@
 <?php
 
-class RFT_Actions
+class Rivo_WTS_Actions
 {
 
 }

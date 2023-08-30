@@ -6,9 +6,10 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    '44c2a8dfb833fa4ee330d18cab9b9b35' => $baseDir . '/includes/class-main.php',
     '50b0226d6cdd59f733e27a27bde3c80e' => $baseDir . '/includes/class-assets.php',
     'ae9e5054e737c1d1efa576358fc2d98e' => $baseDir . '/includes/class-bot.php',
+    '1fac960fc4849d65399606fd33557b63' => $baseDir . '/includes/class-formatting.php',
+    '44c2a8dfb833fa4ee330d18cab9b9b35' => $baseDir . '/includes/class-main.php',
     '1fdb157d9142dec6b7f208eac8b9a081' => $baseDir . '/includes/class-utilities.php',
     '3ce36da589ce853adec41930264bb3b7' => $baseDir . '/includes/admin-pages/class-admin-pages.php',
     '4175608cc2fec2341dfc96e33945792d' => $baseDir . '/includes/admin-pages/class-admin-pages-about.php',
@@ -21,6 +22,7 @@ return array(
     '9aebed1cef8637d24399f631f678feee' => $baseDir . '/includes/settings/class-settings-integrations.php',
     '42f0d1c196d257af0441d6f35466ae8c' => $baseDir . '/includes/settings/class-settings-notifications.php',
     '5b650bfcf37f497d21e2e96cf7cd115a' => $baseDir . '/includes/integrations/class-integrations.php',
+    '1c668389f9e020df2e086349b76e04ab' => $baseDir . '/includes/integrations/class-integrations-all-mails.php',
     '2bb04721e2d2c6696a0d18c80c77a6b8' => $baseDir . '/includes/integrations/class-integrations-contact-form.php',
     '77376458edfbc3e5fa8b24d3b0604c39' => $baseDir . '/includes/integrations/class-integrations-woocommerce.php',
 );

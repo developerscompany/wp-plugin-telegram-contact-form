@@ -1,11 +1,11 @@
 jQuery(document).ready(function () {
 
     function getWatchedForms(){
-        const checkboxes = jQuery('.rft-watch-checbox');
+        const checkboxes = jQuery('.rivo-wts-watch-checbox');
         let watchedForms = [];
         jQuery.each(checkboxes, function () {
             if ( jQuery(this).is(':checked') ){
-                const formId = jQuery(this).attr('id').replace('rft-watch-', '');
+                const formId = jQuery(this).attr('id').replace('rivo-wts-watch-', '');
                 watchedForms.push( formId );
             }
         });
@@ -20,16 +20,16 @@ jQuery(document).ready(function () {
 
 
     function getinputFormat(){
-        const inputs = jQuery('.rft-rename-group');
+        const inputs = jQuery('.rivo-wts-rename-group');
         let intputsData = [];
         jQuery.each(inputs, function () {
             const inputOptions = {
-                id: jQuery(this)[0].id.replace('rft-input-id-', ''),
+                id: jQuery(this)[0].id.replace('rivo-wts-input-id-', ''),
                 emoji: jQuery(this).find('select').val(),
                 original: jQuery(this).find('input[name="input_original_name"]')[0].value,
                 replace: jQuery(this).find('input[name="input_replace_name"]')[0].value,
-                bold: jQuery(this).find('input[name="rft-bold-format-value"]')[0].value,
-                italic: jQuery(this).find('input[name="rft-italic-format-value"]')[0].value,
+                bold: jQuery(this).find('input[name="rivo-wts-bold-format-value"]')[0].value,
+                italic: jQuery(this).find('input[name="rivo-wts-italic-format-value"]')[0].value,
             }
             intputsData.push(inputOptions);
         });
@@ -38,7 +38,7 @@ jQuery(document).ready(function () {
         return intputsData;
     }
 
-    // jQuery('.rft-submit1').click(function(e) {
+    // jQuery('.rivo-wts-submit1').click(function(e) {
     //     e.preventDefault();
     //     getinputFormat();
     // });
@@ -46,13 +46,13 @@ jQuery(document).ready(function () {
 
     function getIntegrations(){
         let integration = [];
-        const checkboxes = jQuery('.rft-integration-checkbox');
+        const checkboxes = jQuery('.rivo-wts-integration-checkbox');
 
         let default_emails = jQuery('#default_emails[name="use_integrations"]').is(':checked');
 
         jQuery.each(checkboxes, function () {
             if ( jQuery(this).is(':checked') ){
-                const integrationName = jQuery(this).attr('id').replace('rft-watch-', '');
+                const integrationName = jQuery(this).attr('id').replace('rivo-wts-watch-', '');
                 integration.push( integrationName );
             }
         });
@@ -105,7 +105,7 @@ jQuery(document).ready(function () {
     function displayNavLinks(){
         let useIntegraions = jQuery( 'input#mod_emails').is(':checked');
         if ( useIntegraions ) {
-            const integrations = jQuery('.rft-integration-checkbox');
+            const integrations = jQuery('.rivo-wts-integration-checkbox');
             jQuery('.form-group.integrations').fadeIn();
             jQuery('.integration-tab-link').hide();
             jQuery.each(integrations, function () {
@@ -123,10 +123,10 @@ jQuery(document).ready(function () {
     }
 
     jQuery('input[name="use_integrations"]').on('change', displayNavLinks);
-    jQuery('input.rft-integration-checkbox').on('change', displayNavLinks);
+    jQuery('input.rivo-wts-integration-checkbox').on('change', displayNavLinks);
 
 
-    jQuery('.rft-submit').click(function(e) {
+    jQuery('.rivo-wts-submit').click(function(e) {
         e.preventDefault();
 
         const button = jQuery(this);
@@ -224,16 +224,16 @@ jQuery(document).ready(function () {
         jQuery(this).toggleClass('selected');
         $val = jQuery(this).hasClass('selected') ? true : false;
 
-        const inpGroup = jQuery(this).closest('.rft-rename-group');
+        const inpGroup = jQuery(this).closest('.rivo-wts-rename-group');
 
-        if ( jQuery(this).hasClass('rft-bold-format') ){
-            inpGroup.find('input[name="rft-bold-format-value"]').val($val);
+        if ( jQuery(this).hasClass('rivo-wts-bold-format') ){
+            inpGroup.find('input[name="rivo-wts-bold-format-value"]').val($val);
         }
-        if ( jQuery(this).hasClass('rft-italic-format') ){
-            inpGroup.find('input[name="rft-italic-format-value"]').val($val);
+        if ( jQuery(this).hasClass('rivo-wts-italic-format') ){
+            inpGroup.find('input[name="rivo-wts-italic-format-value"]').val($val);
         }
-        if ( jQuery(this).hasClass('rft-active-format') ){
-            inpGroup.find('input[name="rft-active-format-value"]').val($val);
+        if ( jQuery(this).hasClass('rivo-wts-active-format') ){
+            inpGroup.find('input[name="rivo-wts-active-format-value"]').val($val);
         }
     });
 

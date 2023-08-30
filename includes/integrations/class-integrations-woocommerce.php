@@ -1,6 +1,6 @@
 <?php
 
-class RFT_Integrations_Woocommerce
+class Rivo_WTS_Integrations_Woocommerce
 {
 
 }

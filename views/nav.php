@@ -1,29 +1,29 @@
-<div class="rft-plugin-tm">
+<div class="rivo-wts-plugin-tm">
     <div class="nav-container">
         <nav>
 
-            <a href="<?= RFT_Admin_Pages::get_link(RFT_Admin_Pages_About::SLUG) ?>"
-                <?= RFT_Admin_Pages::get_current() == RFT_Admin_Pages_About::SLUG ? 'class="active"' : '' ?>
+            <a href="<?= Rivo_WTS_Admin_Pages::get_link(Rivo_WTS_Admin_Pages_About::SLUG) ?>"
+                <?= Rivo_WTS_Admin_Pages::get_current() == Rivo_WTS_Admin_Pages_About::SLUG ? 'class="active"' : '' ?>
             >
-                <span>1</span> <?= __(RFT_Admin_Pages_About::TITLE, RFT_TEXTDOMAIN) ?>
+                <span>1</span> <?= __(Rivo_WTS_Admin_Pages_About::TITLE, Rivo_WTS_TEXTDOMAIN) ?>
             </a>
 
-            <a href="<?= RFT_Admin_Pages::get_link(RFT_Admin_Pages_Bot::SLUG) ?>"
-                <?= RFT_Admin_Pages::get_current() == RFT_Admin_Pages_Bot::SLUG ? 'class="active"' : '' ?>
+            <a href="<?= Rivo_WTS_Admin_Pages::get_link(Rivo_WTS_Admin_Pages_Bot::SLUG) ?>"
+                <?= Rivo_WTS_Admin_Pages::get_current() == Rivo_WTS_Admin_Pages_Bot::SLUG ? 'class="active"' : '' ?>
             >
-                <span>2</span> <?= __(RFT_Admin_Pages_Bot::TITLE, RFT_TEXTDOMAIN) ?>
+                <span>2</span> <?= __(Rivo_WTS_Admin_Pages_Bot::TITLE, Rivo_WTS_TEXTDOMAIN) ?>
             </a>
 
-            <a href="<?= RFT_Admin_Pages::get_link(RFT_Admin_Pages_Integrations::SLUG) ?>"
-                <?= RFT_Admin_Pages::get_current() == RFT_Admin_Pages_Integrations::SLUG ? 'class="active"' : '' ?>
+            <a href="<?= Rivo_WTS_Admin_Pages::get_link(Rivo_WTS_Admin_Pages_Integrations::SLUG) ?>"
+                <?= Rivo_WTS_Admin_Pages::get_current() == Rivo_WTS_Admin_Pages_Integrations::SLUG ? 'class="active"' : '' ?>
             >
-                <span>3</span> <?= __(RFT_Admin_Pages_Integrations::TITLE, RFT_TEXTDOMAIN) ?>
+                <span>3</span> <?= __(Rivo_WTS_Admin_Pages_Integrations::TITLE, Rivo_WTS_TEXTDOMAIN) ?>
             </a>
 
-            <a href="<?= RFT_Admin_Pages::get_link(RFT_Admin_Pages_Notifications::SLUG) ?>"
-                <?= RFT_Admin_Pages::get_current() == RFT_Admin_Pages_Notifications::SLUG ? 'class="active"' : '' ?>
+            <a href="<?= Rivo_WTS_Admin_Pages::get_link(Rivo_WTS_Admin_Pages_Notifications::SLUG) ?>"
+                <?= Rivo_WTS_Admin_Pages::get_current() == Rivo_WTS_Admin_Pages_Notifications::SLUG ? 'class="active"' : '' ?>
             >
-                <span>4</span> <?= __(RFT_Admin_Pages_Notifications::TITLE, RFT_TEXTDOMAIN) ?>
+                <span>4</span> <?= __(Rivo_WTS_Admin_Pages_Notifications::TITLE, Rivo_WTS_TEXTDOMAIN) ?>
             </a>
 
         </nav>

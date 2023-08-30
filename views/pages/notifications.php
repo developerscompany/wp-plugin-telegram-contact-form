@@ -1,4 +1,4 @@
-<div class="rft-plugin-tm">
+<div class="rivo-wts-plugin-tm">
     <div class="container">
         <h1>Notification settings</h1>
 
@@ -19,7 +19,7 @@
                 </div>
 
                 <div class="modify-inputs">
-                    <div class="rft-rename-group">
+                    <div class="rivo-wts-rename-group">
                         <select class="">
                             <option> </option>
                             <option value="🔘" <?php if($input['emoji'] == '🔘'){ echo 'selected'; } ?> >🔘</option>
@@ -36,10 +36,10 @@
                         <input type="text" class="ml-1" name="input_original_name" value="777777" placeholder="Input Name">
                         <input type="text" class="ml-1" name="input_replace_name" value="88888888" placeholder="Display Name">
 
-                        <button class="btn-format rft-bold-format <?php if($input['bold'] == "true"){ echo 'selected'; } ?>" style="font-weight:bold;">
+                        <button class="btn-format rivo-wts-bold-format <?php if($input['bold'] == "true"){ echo 'selected'; } ?>" style="font-weight:bold;">
                             B
                         </button>
-                        <button class="btn-format rft-italic-format <?php if($input['italic'] == "true"){ echo 'selected'; } ?>" style="font-style: italic;">
+                        <button class="btn-format rivo-wts-italic-format <?php if($input['italic'] == "true"){ echo 'selected'; } ?>" style="font-style: italic;">
                             I
                         </button>
 
@@ -61,11 +61,11 @@
             </div>
         </div>
 
-        <?php var_dump(RFT_Settings_Notifications::get()); ?>
+        <?php var_dump(Rivo_WTS_Settings_Notifications::get()); ?>
 
         <div class="footer">
-            <a href="<?= RFT_Admin_Pages::get_link(RFT_Admin_Pages_Integrations::SLUG) ?>" class="btn rivo-rate"><?=  __('Previous Step', RFT_TEXTDOMAIN) ?></a>
-            <a href="#" id="four_step_button" class="btn rivo-start"><?=  __('Save settings', RFT_TEXTDOMAIN) ?></a>
+            <a href="<?= Rivo_WTS_Admin_Pages::get_link(Rivo_WTS_Admin_Pages_Integrations::SLUG) ?>" class="btn rivo-rate"><?=  __('Previous Step', Rivo_WTS_TEXTDOMAIN) ?></a>
+            <a href="#" id="four_step_button" class="btn rivo-start"><?=  __('Save settings', Rivo_WTS_TEXTDOMAIN) ?></a>
         </div>
     </div>
 </div>

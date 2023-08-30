@@ -1,6 +1,6 @@
 <?php
 
-class RFT_Admin_Pages
+class Rivo_WTS_Admin_Pages
 {
     const CAPABILITY = 'manage_options';
 
@@ -8,10 +8,10 @@ class RFT_Admin_Pages
 
     public static function init()
     {
-        RFT_Admin_Pages_About::init();
-        RFT_Admin_Pages_Bot::init();
-        RFT_Admin_Pages_Integrations::init();
-        RFT_Admin_Pages_Notifications::init();
+        Rivo_WTS_Admin_Pages_About::init();
+        Rivo_WTS_Admin_Pages_Bot::init();
+        Rivo_WTS_Admin_Pages_Integrations::init();
+        Rivo_WTS_Admin_Pages_Notifications::init();
     }
 
     public static function get_current()

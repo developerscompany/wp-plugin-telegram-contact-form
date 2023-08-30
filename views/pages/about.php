@@ -1,4 +1,4 @@
-<div class="rft-plugin-tm">
+<div class="rivo-wts-plugin-tm">
     <div class="container">
         <h1>Rivo Telegram Plugin</h1>
         <div class="content">
@@ -6,8 +6,8 @@
         </div>
 
         <div class="footer">
-            <a href="#" target="_blank" class="btn rivo-rate"><?=  __('Rate Rivo Telegram Plugin', RFT_TEXTDOMAIN) ?></a>
-            <a href="<?= RFT_Admin_Pages::get_link(RFT_Admin_Pages_Bot::SLUG) ?>" class="btn rivo-start"><?=  __('Start Settings Plugin', RFT_TEXTDOMAIN) ?></a>
+            <a href="#" target="_blank" class="btn rivo-rate"><?=  __('Rate Rivo Telegram Plugin', Rivo_WTS_TEXTDOMAIN) ?></a>
+            <a href="<?= Rivo_WTS_Admin_Pages::get_link(Rivo_WTS_Admin_Pages_Bot::SLUG) ?>" class="btn rivo-start"><?=  __('Start Settings Plugin', Rivo_WTS_TEXTDOMAIN) ?></a>
         </div>
     </div>
 </div>

@@ -13,7 +13,7 @@ $colorLightGray: #E9E9E9;
     padding-left: 0;
 }
 
-.rft-plugin-tm {
+.rivo-wts-plugin-tm {
 
     .nav-container {
         background-color: white;
@@ -268,15 +268,15 @@ $colorLightGray: #E9E9E9;
             & .modify-inputs{
                 margin-bottom: 24px;
 
-                & .rft-rename-group input,
-                & .rft-rename-group select,
-                & .rft-rename-group button{
+                & .rivo-wts-rename-group input,
+                & .rivo-wts-rename-group select,
+                & .rivo-wts-rename-group button{
                     border: 1px solid #E9E9E9;
                     border-radius: 8px;
                     padding: 8px 16px;
                 }
 
-                & .rft-rename-group button{
+                & .rivo-wts-rename-group button{
                     height: 45px;
                     background: unset;
                     color: #1F64A5;
@@ -284,8 +284,8 @@ $colorLightGray: #E9E9E9;
                     font-weight: 600;
                     cursor: pointer;
 
-                    &.rft-bold-format,
-                    &.rft-italic-format{
+                    &.rivo-wts-bold-format,
+                    &.rivo-wts-italic-format{
                         border: 1px solid #1F64A5;
                     }
                 }

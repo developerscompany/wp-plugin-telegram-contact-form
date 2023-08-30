@@ -4,10 +4,10 @@ jQuery(document).ready(function($) {
 
     $("body").on("change", "input[name='integration_type']", function() {
         const integrationType = $(this).val();
-        if(integrationType === 'forms'){
+        if(integrationType === 'plugins'){
             pluginIntegrationBlock.css('display', 'block');
             // nextStepButton.addClass('isDisabled');
-            $("input[name='plugin_integration']").each(function () {
+            $("input[name='pligins']").each(function () {
                 if(this.checked){
                     nextStepButton.removeClass('isDisabled');
                     return false;
@@ -24,8 +24,8 @@ jQuery(document).ready(function($) {
         }
     });
 
-    $("body").on("change", "input[name='plugin_integration']", function() {
-        $("input[name='plugin_integration']").each(function () {
+    $("body").on("change", "input[name='plugins']", function() {
+        $("input[name='plugins']").each(function () {
             if(this.checked){
                 nextStepButton.removeClass('isDisabled');
                 $('.message-field').html('');
@@ -41,13 +41,12 @@ jQuery(document).ready(function($) {
         if($(this).hasClass('isDisabled')){
             e.preventDefault();
         } else {
-            const integrationType = $('input[name="integration_type"]:checked').attr('id');
+            const integrationType = $('input[name="integration_type"]:checked').val();
             const pluginsList = [];
 
-            if(integrationType === 'forms'){
+            if(integrationType === 'plugins'){
                 $('input[name="plugin_integration"]:checked').each(function () {
-                    const sThisVal = $(this).attr('id');
-                    pluginsList.push(sThisVal);
+                    pluginsList.push($(this).val());
                 });
             }
 
