@@ -8,7 +8,7 @@ jQuery(document).ready(function ($) {
   var nextStepButton = $('#third_step_button');
   $("body").on("change", "input[name='integration_type']", function () {
     var integrationType = $(this).val();
-    if (integrationType === 'plugin-integration') {
+    if (integrationType === 'forms') {
       pluginIntegrationBlock.css('display', 'block');
       // nextStepButton.addClass('isDisabled');
       $("input[name='plugin_integration']").each(function () {
@@ -45,7 +45,7 @@ jQuery(document).ready(function ($) {
     } else {
       var integrationType = $('input[name="integration_type"]:checked').attr('id');
       var pluginsList = [];
-      if (integrationType === 'plugin-integration') {
+      if (integrationType === 'forms') {
         $('input[name="plugin_integration"]:checked').each(function () {
           var sThisVal = $(this).attr('id');
           pluginsList.push(sThisVal);

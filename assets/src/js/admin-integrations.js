@@ -4,7 +4,7 @@ jQuery(document).ready(function($) {
 
     $("body").on("change", "input[name='integration_type']", function() {
         const integrationType = $(this).val();
-        if(integrationType === 'plugin-integration'){
+        if(integrationType === 'forms'){
             pluginIntegrationBlock.css('display', 'block');
             // nextStepButton.addClass('isDisabled');
             $("input[name='plugin_integration']").each(function () {
@@ -44,7 +44,7 @@ jQuery(document).ready(function($) {
             const integrationType = $('input[name="integration_type"]:checked').attr('id');
             const pluginsList = [];
 
-            if(integrationType === 'plugin-integration'){
+            if(integrationType === 'forms'){
                 $('input[name="plugin_integration"]:checked').each(function () {
                     const sThisVal = $(this).attr('id');
                     pluginsList.push(sThisVal);

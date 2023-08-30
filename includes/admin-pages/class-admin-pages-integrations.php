@@ -43,7 +43,7 @@ class RFT_Admin_Pages_Integrations
          $plugins_to_add = array();
       }
 
-       RFT_Settings_Integrations::set(['type' => $integration_type, 'plugins' => $plugins_to_add]);
+      RFT_Settings_Integrations::set(['type' => $integration_type, 'plugins' => $plugins_to_add]);
    }
 }
 
