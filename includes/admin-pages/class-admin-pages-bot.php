@@ -46,7 +46,7 @@ class Rivo_WTS_Admin_Pages_Bot
                $search_results_content['chats_list'] .= '<p>Choose chat</p>';
                foreach (Rivo_WTS_Bot::get_chats_list() as $chat_id => $chat_name){
                   $search_results_content['chats_list'] .= '<div class="check-chat">';
-                  $search_results_content['chats_list'] .= '<input type="radio" id="'.$chat_id.'" name="fav_language" value="'.$chat_name.'">';
+                  $search_results_content['chats_list'] .= '<input type="radio" id="'.$chat_id.'" name="single_chat_id" value="'.$chat_name.'">';
                   $search_results_content['chats_list'] .= ' <label for="'.$chat_id.'">'.$chat_name.'</label>';
                   $search_results_content['chats_list'] .= '</div>';
                }

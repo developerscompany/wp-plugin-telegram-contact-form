@@ -268,6 +268,12 @@ $colorLightGray: #E9E9E9;
             & .modify-inputs{
                 margin-bottom: 24px;
 
+                & .rivo-wts-rename-group{
+                    display: flex;
+                    gap: 10px;
+                    align-items: center;
+                }
+
                 & .rivo-wts-rename-group input,
                 & .rivo-wts-rename-group select,
                 & .rivo-wts-rename-group button{
@@ -287,6 +293,10 @@ $colorLightGray: #E9E9E9;
                     &.rivo-wts-bold-format,
                     &.rivo-wts-italic-format{
                         border: 1px solid #1F64A5;
+                    }
+
+                    &.delete-group{
+                        padding: 10px 0;
                     }
                 }
             }

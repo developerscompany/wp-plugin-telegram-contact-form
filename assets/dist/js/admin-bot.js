@@ -1,1 +1,103 @@
-jQuery(document).ready((function(e){var t=e("#second_step_button");e("#tm_bot_token").val().length<25?e(".aply-tocken-button").prop("disabled",!0):e(".aply-tocken-button").prop("disabled",!1),e("#tm_bot_token").on("keyup",(function(){var s=e(".message-field"),a=e("#tm_bot_token");e("#tm_bot_token").val().length<25?(s.text("Please, enter a valid token"),s.removeClass("apply-field"),s.addClass("error-field"),a.addClass("input-error"),t.addClass("isDisabled"),e(".aply-tocken-button").prop("disabled",!0)):(s.text(""),s.removeClass("error-field"),a.removeClass("input-error"),e(".aply-tocken-button").prop("disabled",!1))})),e(".aply-tocken-button").on("click",(function(){jQuery.ajax({url:"/wp-admin/admin-ajax.php",type:"POST",data:{action:"token_apply",contentType:"application/json; charset=utf-8",token_id:e("#tm_bot_token").val()},success:function(s){var a=e(".message-field"),n=JSON.parse(s);"token_successfull"===n.request?(a.text("Token successfully saved"),a.addClass("apply-field"),"true"===n.request_chat_list?(e(".chats-list").html(n.chats_list),t.addClass("isDisabled")):(e(".chats-list").html(""),t.removeClass("isDisabled"))):(a.text("Token error"),a.removeClass("apply-field"),a.addClass("error-field"),t.addClass("isDisabled"),e(".chats-list").html(""))},error:function(e){console.log(e)}})})),e("body").on("change","input[name='single_chat_id']",(function(){e("#second_step_button").removeClass("isDisabled")})),0===e('input[name="single_chat_id"]:checked').length&&e("#second_step_button").addClass("isDisabled"),e("body").on("click","#second_step_button",(function(t){if(e(this).hasClass("isDisabled"))t.preventDefault();else{var s=e('input[name="single_chat_id"]:checked').attr("id"),a=e("#tm_bot_token").val();jQuery.ajax({url:"/wp-admin/admin-ajax.php",type:"POST",data:{action:"second_step_save",contentType:"application/json; charset=utf-8",chat_id:s,token_id:a},success:function(t){e(".message-field"),e(".second-step-button"),JSON.parse(t)},error:function(e){console.log(e)}})}}))}));
+/******/ (function() { // webpackBootstrap
+var __webpack_exports__ = {};
+/*!************************************!*\
+  !*** ./assets/src/js/admin-bot.js ***!
+  \************************************/
+jQuery(document).ready(function ($) {
+  var buttonNext = $("#second_step_button");
+  if ($("#tm_bot_token").val().length < 25) {
+    $('.aply-tocken-button').prop("disabled", true);
+  } else {
+    $('.aply-tocken-button').prop("disabled", false);
+  }
+  $("#tm_bot_token").on('keyup', function () {
+    var messageField = $('.message-field');
+    var inputField = $('#tm_bot_token');
+    if ($("#tm_bot_token").val().length < 25) {
+      messageField.text('Please, enter a valid token');
+      messageField.removeClass('apply-field');
+      messageField.addClass('error-field');
+      inputField.addClass('input-error');
+      buttonNext.addClass('isDisabled');
+      $('.aply-tocken-button').prop("disabled", true);
+    } else {
+      messageField.text('');
+      messageField.removeClass('error-field');
+      inputField.removeClass('input-error');
+      $('.aply-tocken-button').prop("disabled", false);
+    }
+  });
+  $(".aply-tocken-button").on('click', function () {
+    jQuery.ajax({
+      url: '/wp-admin/admin-ajax.php',
+      type: 'POST',
+      data: {
+        action: 'token_apply',
+        contentType: "application/json; charset=utf-8",
+        token_id: $("#tm_bot_token").val()
+      },
+      success: function success(data) {
+        var messageField = $('.message-field');
+        var json = JSON.parse(data);
+        // console.log(json['chats_list']);
+        if (json['request'] === 'token_successfull') {
+          messageField.text('Token successfully saved');
+          messageField.addClass('apply-field');
+          // console.log(json['request_chat_list']);
+          if (json['request_chat_list'] === 'true') {
+            $('.chats-list').html(json['chats_list']);
+            buttonNext.addClass('isDisabled');
+          } else {
+            $('.chats-list').html('');
+            buttonNext.removeClass('isDisabled');
+          }
+        } else {
+          messageField.text('Token error');
+          messageField.removeClass('apply-field');
+          messageField.addClass('error-field');
+          buttonNext.addClass('isDisabled');
+          $('.chats-list').html('');
+        }
+      },
+      error: function error(_error) {
+        console.log(_error);
+      }
+    });
+  });
+  $("body").on("change", "input[name='single_chat_id']", function () {
+    // console.log($('input[name="single_chat_id"]:checked').attr('id'));
+    $("#second_step_button").removeClass('isDisabled');
+  });
+  if ($('input[name="single_chat_id"]:checked').length === 0) {
+    $("#second_step_button").addClass('isDisabled');
+  }
+  $("body").on("click", "#second_step_button", function (e) {
+    if ($(this).hasClass('isDisabled')) {
+      e.preventDefault();
+    } else {
+      var chatId = $('input[name="single_chat_id"]:checked').attr('id');
+      var tokenId = $("#tm_bot_token").val();
+      jQuery.ajax({
+        url: '/wp-admin/admin-ajax.php',
+        type: 'POST',
+        data: {
+          action: 'second_step_save',
+          contentType: "application/json; charset=utf-8",
+          chat_id: chatId,
+          token_id: tokenId
+        },
+        success: function success(data) {
+          var messageField = $('.message-field');
+          var buttonNext = $(".second-step-button");
+          var json = JSON.parse(data);
+        },
+        error: function error(_error2) {
+          console.log(_error2);
+        }
+      });
+    }
+  });
+});
+/******/ })()
+;
+//# sourceMappingURL=admin-bot.js.map

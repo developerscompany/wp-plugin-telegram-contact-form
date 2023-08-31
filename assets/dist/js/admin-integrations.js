@@ -1,1 +1,74 @@
-jQuery(document).ready((function(e){var n=e(".plugin-integration"),i=e("#third_step_button");e("body").on("change","input[name='integration_type']",(function(){"plugins"===e(this).val()?(n.css("display","block"),e("input[name='plugin_integration']").each((function(){return this.checked?(i.removeClass("isDisabled"),!1):(i.addClass("isDisabled"),e(".message-field").html("Select plugin, please"),!1)}))):(n.css("display","none"),i.removeClass("isDisabled"),e(".message-field").html(""))})),e("body").on("change","input[name='plugin_integration']",(function(){e("input[name='plugin_integration']").each((function(){if(this.checked)return i.removeClass("isDisabled"),e(".message-field").html(""),!1;i.addClass("isDisabled"),e(".message-field").html("Select plugin, please")}))})),e("body").on("click","#third_step_button",(function(n){if(e(this).hasClass("isDisabled"))n.preventDefault();else{var i=e('input[name="integration_type"]:checked').val(),t=[];"plugins"===i&&e('input[name="plugin_integration"]:checked').each((function(){t.push(e(this).val())})),jQuery.ajax({url:"/wp-admin/admin-ajax.php",type:"POST",data:{action:"third_step_save",contentType:"application/json; charset=utf-8",integration_type:i,plugins_list:t},success:function(e){JSON.parse(e)},error:function(e){console.log(e)}})}}))}));
+/******/ (function() { // webpackBootstrap
+var __webpack_exports__ = {};
+/*!*********************************************!*\
+  !*** ./assets/src/js/admin-integrations.js ***!
+  \*********************************************/
+jQuery(document).ready(function ($) {
+  var pluginIntegrationBlock = $('.plugin-integration');
+  var nextStepButton = $('#third_step_button');
+  $("body").on("change", "input[name='integration_type']", function () {
+    var integrationType = $(this).val();
+    if (integrationType === 'plugins') {
+      pluginIntegrationBlock.css('display', 'block');
+      // nextStepButton.addClass('isDisabled');
+      $("input[name='plugin_integration']").each(function () {
+        if (this.checked) {
+          nextStepButton.removeClass('isDisabled');
+          return false;
+        } else {
+          nextStepButton.addClass('isDisabled');
+          $('.message-field').html('Select plugin, please');
+          return false;
+        }
+      });
+    } else {
+      pluginIntegrationBlock.css('display', 'none');
+      nextStepButton.removeClass('isDisabled');
+      $('.message-field').html('');
+    }
+  });
+  $("body").on("change", "input[name='plugin_integration']", function () {
+    $("input[name='plugin_integration']").each(function () {
+      if (this.checked) {
+        nextStepButton.removeClass('isDisabled');
+        $('.message-field').html('');
+        return false;
+      } else {
+        nextStepButton.addClass('isDisabled');
+        $('.message-field').html('Select plugin, please');
+      }
+    });
+  });
+  $("body").on("click", "#third_step_button", function (e) {
+    if ($(this).hasClass('isDisabled')) {
+      e.preventDefault();
+    } else {
+      var integrationType = $('input[name="integration_type"]:checked').val();
+      var pluginsList = [];
+      if (integrationType === 'plugins') {
+        $('input[name="plugin_integration"]:checked').each(function () {
+          pluginsList.push($(this).val());
+        });
+      }
+      jQuery.ajax({
+        url: '/wp-admin/admin-ajax.php',
+        type: 'POST',
+        data: {
+          action: 'third_step_save',
+          contentType: "application/json; charset=utf-8",
+          integration_type: integrationType,
+          plugins_list: pluginsList
+        },
+        success: function success(data) {
+          var json = JSON.parse(data);
+        },
+        error: function error(_error) {
+          console.log(_error);
+        }
+      });
+    }
+  });
+});
+/******/ })()
+;
+//# sourceMappingURL=admin-integrations.js.map
