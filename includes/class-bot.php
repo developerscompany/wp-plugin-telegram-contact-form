@@ -12,8 +12,7 @@ class Rivo_WTS_Bot
         !$chat_ids && $chat_ids = Rivo_WTS_Settings_Bot::get()['chat_ids'];
 
         $result = [];
-        $parse_mode = 'HTML';
-        $disable_web_page_preview = true;
+        $parse_mode = 'html';
 
         foreach ($chat_ids as $chat_id) {
             try {

@@ -25,7 +25,7 @@ class Rivo_WTS_Integrations_Contact_Form
         $text = sprintf("%s: %s\n%s", __('Form Name', Rivo_WTS_TEXTDOMAIN), $contact_form->title, wpcf7_mail_replace_tags($body));
 
         //apply formatting
-        $text = Rivo_WTS_Formatting::apply(Rivo_WTS_Settings_Integrations::TYPE_ALL_EMAILS, $text);
+        $text = Rivo_WTS_Formatting::apply(self::PREFIX_LIST . $contact_form->id(), $text);
 
         //send
         Rivo_WTS_Bot::send_message([], $text);
