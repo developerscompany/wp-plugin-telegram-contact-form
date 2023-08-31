@@ -7,7 +7,7 @@ jQuery(document).ready(function($) {
         if(integrationType === 'plugins'){
             pluginIntegrationBlock.css('display', 'block');
             // nextStepButton.addClass('isDisabled');
-            $("input[name='pligins']").each(function () {
+            $("input[name='plugin_integration']").each(function () {
                 if(this.checked){
                     nextStepButton.removeClass('isDisabled');
                     return false;
@@ -24,8 +24,8 @@ jQuery(document).ready(function($) {
         }
     });
 
-    $("body").on("change", "input[name='plugins']", function() {
-        $("input[name='plugins']").each(function () {
+    $("body").on("change", "input[name='plugin_integration']", function() {
+        $("input[name='plugin_integration']").each(function () {
             if(this.checked){
                 nextStepButton.removeClass('isDisabled');
                 $('.message-field').html('');

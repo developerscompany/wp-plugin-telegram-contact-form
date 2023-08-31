@@ -14,12 +14,12 @@
        <div class="content">
            <div class="type-integration">
                <div class="integration">
-                   <input type="radio" id="rivo_wts_<?= Rivo_WTS_Settings_Integrations::TYPE_ALL_EMAILS ?>"
+                   <input type="radio" id="<?= Rivo_WTS_Settings_Integrations::TYPE_ALL_EMAILS ?>"
                           name="integration_type"
                           value="<?= Rivo_WTS_Settings_Integrations::TYPE_ALL_EMAILS ?>"
                        <?php echo $all_mails_check ? 'checked' : '' ?>
                    >
-                   <label for="rivo_<?= Rivo_WTS_Settings_Integrations::TYPE_ALL_EMAILS ?>">
+                   <label for="<?= Rivo_WTS_Settings_Integrations::TYPE_ALL_EMAILS ?>">
                        All WordPress Emails
                        <span class="integration-desc">Send telegram notice when any kind of wordpress email is sent.</span>
                    </label>
