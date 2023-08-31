@@ -101,6 +101,9 @@ p {
   background-color: white;
   border-radius: 8px;
 }
+.rivo-wts-plugin-tm .container h1 {
+  margin-bottom: 30px;
+}
 .rivo-wts-plugin-tm .container .content .additional-information p {
   font-size: 15px;
   font-weight: 600;
@@ -247,11 +250,18 @@ p {
   display: flex;
   gap: 10px;
   align-items: center;
+  margin-bottom: 24px;
 }
 .rivo-wts-plugin-tm .container .content .global-form-settings .modify-inputs .rivo-wts-rename-group input, .rivo-wts-plugin-tm .container .content .global-form-settings .modify-inputs .rivo-wts-rename-group select, .rivo-wts-plugin-tm .container .content .global-form-settings .modify-inputs .rivo-wts-rename-group button {
   border: 1px solid #E9E9E9;
   border-radius: 8px;
   padding: 8px 16px;
+}
+.rivo-wts-plugin-tm .container .content .global-form-settings .modify-inputs .rivo-wts-rename-group input.ml-1 {
+  width: 260px;
+  font-family: Gilroy;
+  font-size: 15px;
+  font-weight: 500;
 }
 .rivo-wts-plugin-tm .container .content .global-form-settings .modify-inputs .rivo-wts-rename-group button {
   height: 45px;
@@ -264,8 +274,29 @@ p {
 .rivo-wts-plugin-tm .container .content .global-form-settings .modify-inputs .rivo-wts-rename-group button.rivo-wts-bold-format, .rivo-wts-plugin-tm .container .content .global-form-settings .modify-inputs .rivo-wts-rename-group button.rivo-wts-italic-format {
   border: 1px solid #1F64A5;
 }
+.rivo-wts-plugin-tm .container .content .global-form-settings .modify-inputs .rivo-wts-rename-group button.rivo-wts-bold-format.selected, .rivo-wts-plugin-tm .container .content .global-form-settings .modify-inputs .rivo-wts-rename-group button.rivo-wts-italic-format.selected {
+  background-color: #E9E9E9;
+}
 .rivo-wts-plugin-tm .container .content .global-form-settings .modify-inputs .rivo-wts-rename-group button.delete-group {
   padding: 10px 0;
+}
+.rivo-wts-plugin-tm .container .content .global-form-settings .add-new-input-field {
+  font-family: Gilroy;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 24px;
+  border-radius: 8px;
+  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='8' ry='8' stroke='%23333' stroke-width='3' stroke-dasharray='6%2c 14' stroke-dashoffset='3' stroke-linecap='square'/%3e%3c/svg%3e");
+  cursor: pointer;
+  background-color: #ffffff;
+}
+.rivo-wts-plugin-tm .container .content .global-form-settings .add-new-input-field:hover {
+  background-color: #ece1e1;
+  transition: background-color 1000ms linear;
 }
 .rivo-wts-plugin-tm .footer {
   display: flex;

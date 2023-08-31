@@ -100,6 +100,10 @@ $colorLightGray: #E9E9E9;
         background-color: white;
         border-radius: $borderRadius;
 
+        & h1{
+            margin-bottom: 30px;
+        }
+
         & .content .additional-information p{
             font-size: 15px;
             font-weight: 600;
@@ -272,6 +276,7 @@ $colorLightGray: #E9E9E9;
                     display: flex;
                     gap: 10px;
                     align-items: center;
+                    margin-bottom: 24px;
                 }
 
                 & .rivo-wts-rename-group input,
@@ -280,6 +285,13 @@ $colorLightGray: #E9E9E9;
                     border: 1px solid #E9E9E9;
                     border-radius: 8px;
                     padding: 8px 16px;
+                }
+
+                & .rivo-wts-rename-group input.ml-1{
+                    width: 260px;
+                    font-family: Gilroy;
+                    font-size: 15px;
+                    font-weight: 500;
                 }
 
                 & .rivo-wts-rename-group button{
@@ -293,12 +305,39 @@ $colorLightGray: #E9E9E9;
                     &.rivo-wts-bold-format,
                     &.rivo-wts-italic-format{
                         border: 1px solid #1F64A5;
+
+                        &.selected{
+                            background-color: #E9E9E9;
+                        }
                     }
 
                     &.delete-group{
                         padding: 10px 0;
                     }
                 }
+            }
+
+            & .add-new-input-field{
+                font-family: Gilroy;
+                font-size: 14px;
+                font-weight: 600;
+                padding: 15px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-bottom: 24px;
+                border-radius: 8px;
+                background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='8' ry='8' stroke='%23333' stroke-width='3' stroke-dasharray='6%2c 14' stroke-dashoffset='3' stroke-linecap='square'/%3e%3c/svg%3e");
+                cursor: pointer;
+                background-color: #ffffff;
+
+                &:hover{
+                    background-color: #ece1e1;
+                    -webkit-transition: background-color 1000ms linear;
+                    -ms-transition: background-color 1000ms linear;
+                    transition: background-color 1000ms linear;
+                }
+
             }
         }
     }

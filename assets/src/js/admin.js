@@ -219,7 +219,7 @@ jQuery(document).ready(function () {
     });
 
 
-    jQuery('.btn-format').click(function(e) {
+    jQuery("body").on("click", ".btn-format", function(e) {
         e.preventDefault();
         jQuery(this).toggleClass('selected');
         $val = jQuery(this).hasClass('selected') ? true : false;

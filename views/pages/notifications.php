@@ -1,26 +1,32 @@
+<?php $forms_list = Rivo_WTS_Integrations::get_forms_list(); ?>
 <div class="rivo-wts-plugin-tm">
     <div class="container">
         <h1>Notification settings</h1>
+
+<!--        --><?php //var_dump(Rivo_WTS_Integrations::get_forms_list());?>
 
         <div class="content">
             <div class="select-global-form">
                 <label for="global-form">Choose form</label>
 
                 <select name="global-form" id="global-form">
-                    <option value="mercedes">Mercedes</option>
-                    <option value="audi">Audi</option>
+                   <?php foreach ($forms_list as $form_id => $form_name){ ?>
+                       <option value="<?php echo $form_id; ?>">
+                          <?php echo $form_name; ?>
+                       </option>
+                   <?php } ?>
                 </select>
             </div>
 
             <div class="global-form-settings">
                 <div class="form-message">
                     <label for="form-message">Message before successful submission of the form</label>
-                    <input type="text" id="form-message" name="form-message">
+                    <input type="text" id="form_message_before_successful" name="form-message">
                 </div>
 
                 <div class="modify-inputs">
                     <div class="rivo-wts-rename-group">
-                        <select class="">
+                        <select class="form-options">
                             <option> </option>
                             <option value="🔘" <?php if($input['emoji'] == '🔘'){ echo 'selected'; } ?> >🔘</option>
                             <option value="✅" <?php if($input['emoji'] == '✅'){ echo 'selected'; } ?> >✅</option>
@@ -33,13 +39,13 @@
                             <option value="🛒" <?php if($input['emoji'] == '🛒'){ echo 'selected'; } ?> >🛒</option>
                         </select>
 
-                        <input type="text" class="ml-1" name="input_original_name" value="777777" placeholder="Input Name">
-                        <input type="text" class="ml-1" name="input_replace_name" value="88888888" placeholder="Display Name">
+                        <input type="text" class="ml-1" id="input_original_name" name="input_original_name" value="" placeholder="Input Name">
+                        <input type="text" class="ml-1" id="input_replace_name" name="input_replace_name" value="" placeholder="Display Name">
 
-                        <button class="btn-format rivo-wts-bold-format <?php if($input['bold'] == "true"){ echo 'selected'; } ?>" style="font-weight:bold;">
+                        <button id="rivo_wts_bold_format" class="btn-format rivo-wts-bold-format <?php if($input['bold'] == "true"){ echo 'selected'; } ?>" style="font-weight:bold;">
                             B
                         </button>
-                        <button class="btn-format rivo-wts-italic-format <?php if($input['italic'] == "true"){ echo 'selected'; } ?>" style="font-style: italic;">
+                        <button id="rivo_wts_italic_format" class="btn-format rivo-wts-italic-format <?php if($input['italic'] == "true"){ echo 'selected'; } ?>" style="font-style: italic;">
                             I
                         </button>
 
@@ -52,16 +58,27 @@
                     </div>
                 </div>
 
+                <div class="add-new-input-field" id="add-new-input-field">
+                    + Add new input
+                </div>
+
 
                 <div class="form-message-after-successful">
                     <label for="form-message-after-successful">Message after successful submission of the form</label>
-                    <input type="text" id="form-message-after-successful" name="form-message-after-successful">
+                    <input type="text" id="form_message_after_successful" name="form-message-after-successful">
+                </div>
+
+                <div class="">
+                    <input type="checkbox" id="radio_add_url" name="submition_url">
+                    <label for="radio_add_url">
+                        Add form submition URL to message
+                    </label>
                 </div>
 
             </div>
         </div>
 
-        <?php var_dump(Rivo_WTS_Settings_Notifications::get()); ?>
+        <?php print_r(Rivo_WTS_Settings_Notifications::get()); ?>
 
         <div class="footer">
             <a href="<?= Rivo_WTS_Admin_Pages::get_link(Rivo_WTS_Admin_Pages_Integrations::SLUG) ?>" class="btn rivo-rate"><?=  __('Previous Step', Rivo_WTS_TEXTDOMAIN) ?></a>
