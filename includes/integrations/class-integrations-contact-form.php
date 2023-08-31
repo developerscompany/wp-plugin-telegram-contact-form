@@ -37,11 +37,11 @@ class Rivo_WTS_Integrations_Contact_Form
         $posts = get_posts([
             'post_type'      => self::POST_TYPE,
             'post_status'    => 'publish',
-            'posts_per_page' => 1
+            'posts_per_page' => -1
         ]);
 
         foreach ($posts as $post) {
-            $list[self::PREFIX_LIST . $post->ID] = get_the_title($post);
+            $list[self::PREFIX_LIST . $post->ID] = sprintf('%s %s', __('Contact Form', Rivo_WTS_TEXTDOMAIN), get_the_title($post));
         }
 
         return $list;
