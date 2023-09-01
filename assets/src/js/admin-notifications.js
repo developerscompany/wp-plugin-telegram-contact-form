@@ -57,35 +57,38 @@ jQuery(document).ready(function($) {
         $(".rivo-wts-rename-group").each(function() {
             const textBefore = $(this).find('#input_original_name').val();
             const textAfter = $(this).find('#input_replace_name').val();
-            let arr = new Map([]);
+            const formIcon = $(this).find('#selected_icon').find(":selected").val();
+            let mapReplaces = new Map([]);
 
             // let infoObject = [textBefore, textAfter];
 
-            arr.set('text_before', textBefore);
-            arr.set('text_after', textAfter);
+            mapReplaces.set('text_before', textBefore);
+            mapReplaces.set('text_after', textAfter);
             console.log($(this).find('#input_original_name').val());
             console.log($(this).find('#input_replace_name').val());
 
             if($(this).find('#rivo_wts_bold_format').hasClass('selected')){
                 // infoObject.push('true');
-                arr.set('bold','true');
+                mapReplaces.set('bold','true');
             } else {
                 // infoObject.push('false');
-                arr.set('bold','false');
+                mapReplaces.set('bold','false');
             }
 
             if($(this).find('#rivo_wts_italic_format').hasClass('selected')){
                 // infoObject.push('true');
-                arr.set('italic','true');
+                mapReplaces.set('italic','true');
             } else {
                 // infoObject.push('false');
-                arr.set('italic','false');
+                mapReplaces.set('italic','false');
             }
+
+            mapReplaces.set('icon', formIcon);
 
 
             // dara_attributes.replaces = infoObject;
             // Object.assign(dara_attributes.replaces, infoObject);
-            replacesArray.push(Object.fromEntries(arr));
+            replacesArray.push(Object.fromEntries(mapReplaces));
         });
 
         dara_attributes.replaces = replacesArray;
@@ -95,20 +98,24 @@ jQuery(document).ready(function($) {
         console.log(data_information);
 
 
-        // jQuery.ajax({
-        //     url: '/wp-admin/admin-ajax.php',
-        //     type: 'POST',
-        //     data: {
-        //         action: 'four_step_save',
-        //         contentType: "application/json; charset=utf-8",
-        //         form_name: formName,
-        //         form_info: data_information,
-        //     },
-        //     success: function (data) {
-        //         let json = JSON.parse(data);
-        //         console.log(json.field_info);
-        //     },
-        //     error : function(error){ console.log(error) }
-        // });
+        jQuery.ajax({
+            url: '/wp-admin/admin-ajax.php',
+            type: 'POST',
+            data: {
+                action: 'four_step_save',
+                contentType: "application/json; charset=utf-8",
+                form_name: formName,
+                form_info: data_information,
+            },
+            success: function (data) {
+                let json = JSON.parse(data);
+                console.log(json.field_info);
+            },
+            error : function(error){ console.log(error) }
+        });
     })
+
+    $("body").on("change", "#global-form", function(e) {
+        console.log($(this).val());
+    });
 });

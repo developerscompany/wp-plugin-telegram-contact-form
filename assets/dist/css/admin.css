@@ -1,21 +1,21 @@
 @charset "UTF-8";
 @font-face {
   font-family: "Gilroy";
-  src: url(/wp-content/plugins/wp-plugin-telegram-contact-form-main/assets/dist/fonts/Gilroy-Light.woff?9df2f5dbbb9c90a6ede7c1348521d216) format("woff");
+  src: url(../fonts/Gilroy-Light.woff?9df2f5dbbb9c90a6ede7c1348521d216) format("woff");
   font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Gilroy";
-  src: url(/wp-content/plugins/wp-plugin-telegram-contact-form-main/assets/dist/fonts/Gilroy-Regular.woff?31d54a4b841c0e438f130447e373792b) format("woff");
+  src: url(../fonts/Gilroy-Regular.woff?31d54a4b841c0e438f130447e373792b) format("woff");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Gilroy";
-  src: url(/wp-content/plugins/wp-plugin-telegram-contact-form-main/assets/dist/fonts/Gilroy-Bold.woff?5fb38b9fa452b5814397d5bcce0d2d5e) format("woff");
+  src: url(../fonts/Gilroy-Bold.woff?5fb38b9fa452b5814397d5bcce0d2d5e) format("woff");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -57,6 +57,9 @@ p {
 }
 .rivo-wts-plugin-tm nav a:hover {
   cursor: pointer;
+}
+.rivo-wts-plugin-tm nav a:focus {
+  box-shadow: unset;
 }
 .rivo-wts-plugin-tm nav a.active {
   color: #fff;

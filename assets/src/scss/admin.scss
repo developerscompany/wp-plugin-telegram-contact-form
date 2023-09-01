@@ -47,6 +47,10 @@ $colorLightGray: #E9E9E9;
                 cursor: pointer;
             }
 
+            &:focus{
+                box-shadow: unset;
+            }
+
             &.active {
                 color: #fff;
                 background-color: #23468c;

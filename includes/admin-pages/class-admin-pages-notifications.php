@@ -36,7 +36,7 @@ class Rivo_WTS_Admin_Pages_Notifications
       $search_results_content = array();
 
       $search_results_content['field_info'] .= '<div class="rivo-wts-rename-group">';
-      $search_results_content['field_info'] .= '<select class="form-options">
+      $search_results_content['field_info'] .= '<select class="form-options" id="selected_icon">
                                                     <option> </option>
                                                     <option value="🔘">🔘</option>
                                                     <option value="✅">✅</option>
@@ -70,16 +70,15 @@ class Rivo_WTS_Admin_Pages_Notifications
    public static function four_step_save(){
        $form_name = $_POST['form_name'];
        $block_info = $_POST['form_info'];
-      $search_results_content = array();
-      $search_results_content[$form_name] = $block_info;
+      $form_settings = Rivo_WTS_Settings_Notifications::get();
 
-//      var_dump($block_info);
+      if(array_key_exists ($form_name, $form_settings['forms']) == true){
+         $form_settings['forms'][$form_name] = $block_info;
+      } else {
+         $form_settings['forms'] += array($form_name => $block_info);
+      }
 
-      ini_set( 'xdebug.var_display_max_depth', '10' );
-      ini_set( 'xdebug.var_display_max_children', '256' );
-      ini_set( 'xdebug.var_display_max_data', '1024' );
-
-      Rivo_WTS_Settings_Notifications::set($block_info);
+      Rivo_WTS_Settings_Notifications::set($form_settings);
 
       //echo json_encode($search_results_content);
       //wp_die();
