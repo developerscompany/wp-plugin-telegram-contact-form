@@ -19,7 +19,30 @@ jQuery(document).ready(function($) {
     //     $('body').find('select#selected_icon').select2();
     // },7000)
 
-    $('select').select2();
+    // $('select').select2();
+
+    // $("#selected_icon").selectize();
+
+    $('select#selected_icon').selectric();
+
+    // $("select#selected_icon").each(function (){
+    //     $(this).selectize();
+    // })
+
+    // $("select").selectize({
+    //     plugins: ["restore_on_backspace", "clear_button"],
+    //     delimiter: " - ",
+    //     persist: false,
+    //     maxItems: null,
+    //     valueField: "email",
+    //     labelField: "name",
+    //     searchField: ["name", "email"],
+    //     options: [
+    //         { email: "selectize@risadams.com", name: "Ris Adams" },
+    //         { email: "someone@gmail.com", name: "Someone" },
+    //         { email: "someone-else@yahoo.com", name: "Someone Else" },
+    //     ],
+    // });
 
     const selectGlobalForm =  $('.select-global-form select');
     selectGlobalForm.on('focus', function(e) {
@@ -36,6 +59,7 @@ jQuery(document).ready(function($) {
     $("body").on("click", "#add-new-input-field", function(e) {
         const parentField = $('.modify-inputs');
         $(".rivo-wts-rename-group:first").clone().removeClass('rivo-wts-rename-group-hidden').appendTo(parentField);
+        $('select#selected_icon').selectric();
 
         // $('.form-options').each(function(){
         //     console.log(99999999999999);
@@ -128,21 +152,21 @@ jQuery(document).ready(function($) {
         console.log(data_information);
 
 
-        // jQuery.ajax({
-        //     url: '/wp-admin/admin-ajax.php',
-        //     type: 'POST',
-        //     data: {
-        //         action: 'four_step_save',
-        //         contentType: "application/json; charset=utf-8",
-        //         form_name: formName,
-        //         form_info: data_information,
-        //     },
-        //     success: function (data) {
-        //         let json = JSON.parse(data);
-        //         console.log(json.field_info);
-        //     },
-        //     error : function(error){ console.log(error) }
-        // });
+        jQuery.ajax({
+            url: '/wp-admin/admin-ajax.php',
+            type: 'POST',
+            data: {
+                action: 'four_step_save',
+                contentType: "application/json; charset=utf-8",
+                form_name: formName,
+                form_info: data_information,
+            },
+            success: function (data) {
+                let json = JSON.parse(data);
+                console.log(json.field_info);
+            },
+            error : function(error){ console.log(error) }
+        });
     })
 
     $("body").on("change", "#global-form", function(e) {
