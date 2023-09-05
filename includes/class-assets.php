@@ -27,6 +27,9 @@ class Rivo_WTS_Assets
         }
 
         if(Rivo_WTS_Admin_Pages::get_current() === Rivo_WTS_Admin_Pages_Notifications::SLUG) {
+           wp_enqueue_style( Rivo_WTS_Main::PREFIX . 'style-select2', plugins_url('wp-plugin-telegram-contact-form/assets/dist/css/select2.min.css' ));
+           wp_enqueue_script( Rivo_WTS_Main::PREFIX . 'script-select2', plugins_url('wp-plugin-telegram-contact-form/assets/dist/js/select2.min.js') , ['jquery'], false, true );
+
             wp_enqueue_script( Rivo_WTS_Main::PREFIX . 'script-admin-notifications', self::getUrlWithVersion('/js/admin-notifications.js') , ['jquery'], false, true );
             wp_localize_script( Rivo_WTS_Main::PREFIX . 'script-admin-notifications', 'frontend_ajax_object', ['ajaxurl' => admin_url( 'admin-ajax.php' )] );
         }
