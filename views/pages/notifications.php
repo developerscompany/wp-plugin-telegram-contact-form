@@ -36,11 +36,25 @@ if(array_key_exists ('contact-form-7', $form_settings['forms'])){
                 </select>
             </div>
 
-            <div class="global-form-settings">
-                <?php
-                global $form;
-                $form = Rivo_WTS_Settings_Notifications::get();
-                require_once Rivo_WTS_PLUGIN_DIR.'/views/parts/forms_fields_info.php'; ?>
+            <div class="full-container">
+                <div class='preloader preloader-hidden'>
+                    <div class='preloader-dots'>
+                        <div class='dot'></div>
+                        <div class='dot'></div>
+                        <div class='dot'></div>
+                        <div class='dot'></div>
+                        <div class='dot'></div>
+                    </div>
+                </div>
+                <div class="global-form-settings">
+                    <?php
+                    global $form;
+                    global $ajax_notifications_method;
+
+                    $form = Rivo_WTS_Settings_Notifications::get();
+                    $ajax_notifications_method = false;
+                    require_once Rivo_WTS_PLUGIN_DIR.'/views/parts/forms_fields_info.php'; ?>
+                </div>
             </div>
         </div>
 

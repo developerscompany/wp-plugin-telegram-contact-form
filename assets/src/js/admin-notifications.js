@@ -3,47 +3,6 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 jQuery(document).ready(function($) {
-
-    // $('#selected_icon').select2({
-    //     // width: '150px',
-    //     minimumResultsForSearch: -1
-    // });
-
-    // setTimeout(function (){
-    //     $('.rivo-wts-rename-group #selected_icon').each(function (){
-    //         $(this).addClass('zazazazazazaz');
-    //         $(this).select2();
-    //     })
-    //     console.log('Ready');
-    //
-    //     $('body').find('select#selected_icon').select2();
-    // },7000)
-
-    // $('select').select2();
-
-    // $("#selected_icon").selectize();
-
-    $('select#selected_icon').selectric();
-
-    // $("select#selected_icon").each(function (){
-    //     $(this).selectize();
-    // })
-
-    // $("select").selectize({
-    //     plugins: ["restore_on_backspace", "clear_button"],
-    //     delimiter: " - ",
-    //     persist: false,
-    //     maxItems: null,
-    //     valueField: "email",
-    //     labelField: "name",
-    //     searchField: ["name", "email"],
-    //     options: [
-    //         { email: "selectize@risadams.com", name: "Ris Adams" },
-    //         { email: "someone@gmail.com", name: "Someone" },
-    //         { email: "someone-else@yahoo.com", name: "Someone Else" },
-    //     ],
-    // });
-
     const selectGlobalForm =  $('.select-global-form select');
     selectGlobalForm.on('focus', function(e) {
         $(this).parent().addClass('active');
@@ -56,18 +15,17 @@ jQuery(document).ready(function($) {
         $(this).parent('.rivo-wts-rename-group').remove();
     });
 
-    $("body").on("click", "#add-new-input-field", function(e) {
-        const parentField = $('.modify-inputs');
-        $(".rivo-wts-rename-group:first").clone().removeClass('rivo-wts-rename-group-hidden').appendTo(parentField);
-        $('select#selected_icon').selectric();
+    $('select#selected_icon').selectric();
 
-        // $('.form-options').each(function(){
-        //     console.log(99999999999999);
-        //     $(this).addClass('zazazazazazaz');
-        //     $(this).select2({
-        //         minimumResultsForSearch: -1
-        //     })
-        // });
+    let counter = 0;
+    $("body").on("click", "#add-new-input-field", function(e) {
+        counter++;
+        let selectedId = 'selected_icon'+counter;
+        const parentField = $('.modify-inputs');
+        const cloned = $(".rivo-wts-rename-group:first").clone().removeClass('rivo-wts-rename-group-hidden').appendTo(parentField);
+        cloned.find('select').attr('id', selectedId);
+        cloned.find('select').removeClass('form-option-cloned');
+        $(`select#${selectedId}`).selectric();
 
         console.log('Click');
 
@@ -110,7 +68,7 @@ jQuery(document).ready(function($) {
             if (!$(this).hasClass('rivo-wts-rename-group-hidden')){
                 const textBefore = $(this).find('#input_original_name').val();
                 const textAfter = $(this).find('#input_replace_name').val();
-                const formIcon = $(this).find('#selected_icon').find(":selected").val();
+                const formIcon = $(this).find('.form-options').find(":selected").val();
                 let mapReplaces = new Map([]);
 
                 // let infoObject = [textBefore, textAfter];
@@ -170,8 +128,10 @@ jQuery(document).ready(function($) {
     })
 
     $("body").on("change", "#global-form", function(e) {
+        const preloader = $('div.preloader');
         console.log($(this).val());
         const globalFormSettings = $('.global-form-settings');
+        preloader.removeClass('preloader-hidden');
 
         jQuery.ajax({
             url: '/wp-admin/admin-ajax.php',
@@ -183,8 +143,11 @@ jQuery(document).ready(function($) {
             },
             success: function (data) {
                 let json = JSON.parse(data);
-                console.log(json.form_info);
+                // console.log(json.form_info);
                 globalFormSettings.html(json.form_info);
+                console.log('Adding HTML');
+                $('select#selected_icon').selectric();
+                preloader.addClass('preloader-hidden');
             },
             error : function(error){ console.log(error) }
         });

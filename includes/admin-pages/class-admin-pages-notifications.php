@@ -84,36 +84,22 @@ class Rivo_WTS_Admin_Pages_Notifications
 
    public static function select_another_form()
    {
+      global $form_name;
+      global $results_content;
+      global $ajax_notifications_method;
+      global $form_settings;
+      global $emoji_arr;
+
+      $results_content = array();
       $form_name = $_POST['form_name'];
+      $ajax_notifications_method = true;
       $form_settings = Rivo_WTS_Settings_Notifications::get();
-      $search_results_content = array();
       $emoji = "👤|✉|😍|😃|😀|😀|😃|😄|😁|😆|🥹|😅|😇|😊|☺|🥲|🤣|😀|😂|😃|😀|😄|😁|😆|🥹|😅|😇|😊|☺|😍|🥰|😘|😗|🤪|😜|🥰|😍|😌|😉|🙃|😙|😚|😋|😛|🥰|😜|🥳|🤩|😎|😏|😒|😞|😔|😟|😕";
       $emoji_arr = explode("|", $emoji);
 
-      if (array_key_exists($form_name, $form_settings['forms'])) {
-         $search_results_content['form_info'] .= '<div class="form-message">
-                        <label for="form-message">Message before successful submission of the form</label>
-                        <input type="text" id="form_message_before_successful" name="form-message" value="' . $form_settings['forms'][$form_name]['text_before'] . '">
-                        </div>';
-         $search_results_content['form_info'] .= '<div class="modify-inputs">';
+      require_once Rivo_WTS_PLUGIN_DIR.'/views/parts/forms_fields_info.php';
 
-         foreach ($form_settings['forms'][$form_name]['replaces'] as $form_field) {
-            $search_results_content['form_info'] .= '<div class="rivo-wts-rename-group">';
-            $search_results_content['form_info'] .= '<select class="form-options" id="selected_icon">'; ?>
-               <?php foreach($emoji_arr as $emoji){
-               $selected_label = '';
-               if($form_field['icon'] == $emoji){ $selected_label = 'selected'; };
-               $search_results_content['form_info'] .= '<option value="'.$emoji.'" '.$selected_label.'>'.$emoji.'</option>';
-            }
-            $search_results_content['form_info'] .= '</select>';
-            $search_results_content['form_info'] .= '</div>';
-         }
-         $search_results_content['form_info'] .= '</div>';
-      } else {
-         $search_results_content['form_info'] .= '<div class="rivo-wts-rename-group">azazaazazazazaz</div>';
-      }
-
-      echo json_encode($search_results_content);
+      echo json_encode($results_content);
       wp_die();
    }
 

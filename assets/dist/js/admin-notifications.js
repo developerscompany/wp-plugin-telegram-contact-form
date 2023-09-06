@@ -7,46 +7,6 @@ document.addEventListener('DOMContentLoaded', function () {
   // alert('notifications');
 });
 jQuery(document).ready(function ($) {
-  // $('#selected_icon').select2({
-  //     // width: '150px',
-  //     minimumResultsForSearch: -1
-  // });
-
-  // setTimeout(function (){
-  //     $('.rivo-wts-rename-group #selected_icon').each(function (){
-  //         $(this).addClass('zazazazazazaz');
-  //         $(this).select2();
-  //     })
-  //     console.log('Ready');
-  //
-  //     $('body').find('select#selected_icon').select2();
-  // },7000)
-
-  // $('select').select2();
-
-  // $("#selected_icon").selectize();
-
-  $('select#selected_icon').selectric();
-
-  // $("select#selected_icon").each(function (){
-  //     $(this).selectize();
-  // })
-
-  // $("select").selectize({
-  //     plugins: ["restore_on_backspace", "clear_button"],
-  //     delimiter: " - ",
-  //     persist: false,
-  //     maxItems: null,
-  //     valueField: "email",
-  //     labelField: "name",
-  //     searchField: ["name", "email"],
-  //     options: [
-  //         { email: "selectize@risadams.com", name: "Ris Adams" },
-  //         { email: "someone@gmail.com", name: "Someone" },
-  //         { email: "someone-else@yahoo.com", name: "Someone Else" },
-  //     ],
-  // });
-
   var selectGlobalForm = $('.select-global-form select');
   selectGlobalForm.on('focus', function (e) {
     $(this).parent().addClass('active');
@@ -57,19 +17,16 @@ jQuery(document).ready(function ($) {
   $("body").on("click", "#delete-group", function (e) {
     $(this).parent('.rivo-wts-rename-group').remove();
   });
+  $('select#selected_icon').selectric();
+  var counter = 0;
   $("body").on("click", "#add-new-input-field", function (e) {
+    counter++;
+    var selectedId = 'selected_icon' + counter;
     var parentField = $('.modify-inputs');
-    $(".rivo-wts-rename-group:first").clone().removeClass('rivo-wts-rename-group-hidden').appendTo(parentField);
-    $('select#selected_icon').selectric();
-
-    // $('.form-options').each(function(){
-    //     console.log(99999999999999);
-    //     $(this).addClass('zazazazazazaz');
-    //     $(this).select2({
-    //         minimumResultsForSearch: -1
-    //     })
-    // });
-
+    var cloned = $(".rivo-wts-rename-group:first").clone().removeClass('rivo-wts-rename-group-hidden').appendTo(parentField);
+    cloned.find('select').attr('id', selectedId);
+    cloned.find('select').removeClass('form-option-cloned');
+    $("select#".concat(selectedId)).selectric();
     console.log('Click');
 
     // jQuery.ajax({
@@ -114,7 +71,7 @@ jQuery(document).ready(function ($) {
       if (!$(this).hasClass('rivo-wts-rename-group-hidden')) {
         var textBefore = $(this).find('#input_original_name').val();
         var textAfter = $(this).find('#input_replace_name').val();
-        var formIcon = $(this).find('#selected_icon').find(":selected").val();
+        var formIcon = $(this).find('.form-options').find(":selected").val();
         var mapReplaces = new Map([]);
 
         // let infoObject = [textBefore, textAfter];
@@ -166,8 +123,10 @@ jQuery(document).ready(function ($) {
     });
   });
   $("body").on("change", "#global-form", function (e) {
+    var preloader = $('div.preloader');
     console.log($(this).val());
     var globalFormSettings = $('.global-form-settings');
+    preloader.removeClass('preloader-hidden');
     jQuery.ajax({
       url: '/wp-admin/admin-ajax.php',
       type: 'POST',
@@ -178,8 +137,11 @@ jQuery(document).ready(function ($) {
       },
       success: function success(data) {
         var json = JSON.parse(data);
-        console.log(json.form_info);
+        // console.log(json.form_info);
         globalFormSettings.html(json.form_info);
+        console.log('Adding HTML');
+        $('select#selected_icon').selectric();
+        preloader.addClass('preloader-hidden');
       },
       error: function error(_error2) {
         console.log(_error2);
