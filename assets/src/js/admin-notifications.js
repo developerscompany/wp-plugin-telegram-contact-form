@@ -12,10 +12,22 @@ jQuery(document).ready(function($) {
     });
 
     $("body").on("click", "#delete-group", function(e) {
-        $(this).parent('.rivo-wts-rename-group').remove();
+        // $(this).parent('.rivo-wts-rename-group').remove();
+        $(this).parent('.rivo-wts-fields').addClass('filed-blur');
+        $(this).parent('.rivo-wts-fields').parent('.rivo-wts-rename-group').find('div.rivo-wts-are-you-sure').removeClass('sure-hidden');
     });
 
+    $("body").on("click", ".rivo-wts-are-you-sure-true", function(e) {
+        $(this).parent('.rivo-wts-are-you-sure').parent('.rivo-wts-rename-group').remove();
+    });
+
+    $("body").on("click", ".rivo-wts-are-you-sure-false", function(e) {
+        $(this).parent('.rivo-wts-are-you-sure').parent('.rivo-wts-rename-group').find('.rivo-wts-fields').removeClass('filed-blur');
+        $(this).parent('.rivo-wts-are-you-sure').addClass('sure-hidden');
+    })
+
     $('select#selected_icon').selectric();
+    $('select#global-form').selectric();
 
     let counter = 0;
     $("body").on("click", "#add-new-input-field", function(e) {
@@ -50,6 +62,7 @@ jQuery(document).ready(function($) {
     })
 
     $("body").on("click", "#four_step_button", function(e) {
+        e.preventDefault();
         const formName = $('#global-form').find(":selected").val();
         const formMessageBefore = $('#form_message_before_successful').val();
         const formMessageAfter = $('#form_message_after_successful').val();

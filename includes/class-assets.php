@@ -13,6 +13,8 @@ class Rivo_WTS_Assets
             wp_enqueue_style( Rivo_WTS_Main::PREFIX . 'style-admin', self::getUrlWithVersion('/css/admin.css'));
             wp_enqueue_script( Rivo_WTS_Main::PREFIX . 'script-admin', self::getUrlWithVersion('/js/admin.js') , ['jquery'], false, true );
             wp_localize_script( Rivo_WTS_Main::PREFIX . 'script-admin', 'frontend_ajax_object', ['ajaxurl' => admin_url( 'admin-ajax.php' )] );
+
+           wp_enqueue_style( Rivo_WTS_Main::PREFIX . 'fonts', plugins_url('wp-plugin-telegram-contact-form/assets/dist/fonts/fonts.css' ));
         }
 
 

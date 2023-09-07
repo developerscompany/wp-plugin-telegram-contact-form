@@ -243,15 +243,15 @@
     padding-left: 25px;
 }
 
-.selectric-open .selectric-items{
+.rivo-wts-rename-group .selectric-open .selectric-items{
     width: 200px!important;
 }
 
-.selectric-items ul{
+.rivo-wts-rename-group .selectric-items ul{
     display: flex;
     flex-wrap: wrap;
 }
 
-.selectric .button{
+.rivo-wts-rename-group .selectric .button{
     border: unset;
 }
