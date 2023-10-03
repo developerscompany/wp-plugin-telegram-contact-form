@@ -8,17 +8,17 @@ class Rivo_WTS_Admin_Pages_Integrations
     public static function init()
     {
         add_action('admin_menu', [__CLASS__, 'add_menu'], 10000);
-        Rivo_WTS_Admin_Pages::$all_slugs[] = self::SLUG;
 
-        add_action( 'wp_ajax_third_step_save', [ __CLASS__, 'third_step_save' ] );
+        add_action('wp_ajax_integrations_load_settings', [__CLASS__, 'ajax_load_settings']);
+        add_action('wp_ajax_integrations_save_settings', [__CLASS__, 'ajax_save_settings']);
     }
 
     public static function add_menu()
     {
         add_submenu_page(
             Rivo_WTS_Admin_Pages_About::SLUG,
-            sprintf('%s %s', __( 'Rivo Telegram', Rivo_WTS_TEXTDOMAIN ), __(self::TITLE, Rivo_WTS_TEXTDOMAIN )),
-            __( self::TITLE, Rivo_WTS_TEXTDOMAIN ),
+            sprintf('%s %s', __('Rivo Telegram', Rivo_WTS_TEXTDOMAIN), __(self::TITLE, Rivo_WTS_TEXTDOMAIN)),
+            __(self::TITLE, Rivo_WTS_TEXTDOMAIN),
             Rivo_WTS_Admin_Pages::CAPABILITY,
             self::SLUG,
             [__CLASS__, 'screen']
@@ -31,15 +31,28 @@ class Rivo_WTS_Admin_Pages_Integrations
         include_once Rivo_WTS_PLUGIN_DIR . '/views/pages/integrations.php';
     }
 
-   public static function third_step_save(){
-       $integration_type = $_POST['integration_type'];
-       $plugins_list = $_POST['plugins_list'];
-      if($plugins_list){
-         $plugins_to_add = $plugins_list;
-      } else {
-         $plugins_to_add = array();
-      }
+    public static function ajax_load_settings()
+    {
+        wp_send_json_success(['settings' => Rivo_WTS_Settings_Integrations::get()]);
+    }
 
-       Rivo_WTS_Settings_Integrations::set(['type' => $integration_type, 'plugins' => $plugins_to_add]);
-   }
+    public static function ajax_save_settings()
+    {
+        $payload = json_decode(stripslashes($_POST['payload']), ARRAY_A);
+
+        if (empty($payload['type'])) {
+            wp_send_json_error(['message' => __('Please select type', Rivo_WTS_TEXTDOMAIN)], 422);
+        }
+
+        if ($payload['type'] === Rivo_WTS_Settings_Integrations::TYPE_PLUGINS && empty($payload['plugins'])) {
+            wp_send_json_error(['message' => __('Please select any form integration', Rivo_WTS_TEXTDOMAIN)], 422);
+        }
+
+        Rivo_WTS_Settings_Integrations::set([
+            'type'    => $payload['type'],
+            'plugins' => $payload['plugins']
+        ]);
+
+        wp_send_json_success();
+    }
 }

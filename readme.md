@@ -19,6 +19,6 @@
     <li>Source files from <b>/assets/src</b> will be compilated to <b>/assets/dist</b> </li>
     <li>If folder "node_modules" does not exists. Terminal - <b>npm install</b></li>
     <li>Compilation while <b>development</b> - Terminal - <b>npm run watch</b></li>
-    <li>Compilation <b>production</b> - Terminal - <b>npm run prod</b></li>
+    <li>Compilation <b>production</b> - Terminal - <b>npm run build</b></li>
 </ol>
 

@@ -6,4 +6,5 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Spatie\\Emoji\\' => array($vendorDir . '/spatie/emoji/src'),
 );

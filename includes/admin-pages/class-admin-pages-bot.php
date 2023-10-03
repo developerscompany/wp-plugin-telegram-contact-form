@@ -8,18 +8,18 @@ class Rivo_WTS_Admin_Pages_Bot
     public static function init()
     {
         add_action('admin_menu', [__CLASS__, 'add_menu'], 10000);
-        Rivo_WTS_Admin_Pages::$all_slugs[] = self::SLUG;
-
-        add_action('wp_ajax_token_apply', [__CLASS__, 'getStuffDone']);
-        add_action('wp_ajax_second_step_save', [__CLASS__, 'second_step_save_changes']);
+        add_action('wp_ajax_bot_save_token', [__CLASS__, 'ajax_save_token']);
+        add_action('wp_ajax_bot_load_settings', [__CLASS__, 'ajax_load_settings']);
+        add_action('wp_ajax_bot_save_settings', [__CLASS__, 'ajax_save_settings']);
+        add_action('wp_ajax_bot_send_test_message', [__CLASS__, 'ajax_send_test_message']);
     }
 
     public static function add_menu()
     {
         add_submenu_page(
             Rivo_WTS_Admin_Pages_About::SLUG,
-            sprintf('%s %s', __( 'Rivo Telegram', Rivo_WTS_TEXTDOMAIN ), __(self::TITLE, Rivo_WTS_TEXTDOMAIN )),
-            __( self::TITLE, Rivo_WTS_TEXTDOMAIN ),
+            sprintf('%s %s', __('Rivo Telegram', Rivo_WTS_TEXTDOMAIN), __(self::TITLE, Rivo_WTS_TEXTDOMAIN)),
+            __(self::TITLE, Rivo_WTS_TEXTDOMAIN),
             Rivo_WTS_Admin_Pages::CAPABILITY,
             self::SLUG,
             [__CLASS__, 'screen']
@@ -32,59 +32,89 @@ class Rivo_WTS_Admin_Pages_Bot
         include_once Rivo_WTS_PLUGIN_DIR . '/views/pages/bot.php';
     }
 
-   public static function getStuffDone() {
-       $token_id = $_POST['token_id'];
-       $search_results_content = array();
+    public static function ajax_save_token()
+    {
+        $payload = json_decode(stripslashes($_POST['payload']), ARRAY_A);
 
-         try {
-            Rivo_WTS_Bot::get_me($token_id);
-            $search_results_content['request'] = 'token_successfull';
-            Rivo_WTS_Settings_Bot::set_token($token_id);
+        if (empty($payload['token'])) {
+            return wp_send_json_error(['message' => 'Empty token'], 422);
+        }
 
-            try {
-               $search_results_content['request_chat_list'] = 'true';
-               $search_results_content['chats_list'] .= '<p>Choose chat</p>';
-               foreach (Rivo_WTS_Bot::get_chats_list() as $chat_id => $chat_name){
-                  $search_results_content['chats_list'] .= '<div class="check-chat">';
-                  $search_results_content['chats_list'] .= '<input type="radio" id="'.$chat_id.'" name="single_chat_id" value="'.$chat_name.'">';
-                  $search_results_content['chats_list'] .= ' <label for="'.$chat_id.'">'.$chat_name.'</label>';
-                  $search_results_content['chats_list'] .= '</div>';
-               }
-            } catch (Exception $e) {
-               $search_results_content['request_chat_list'] = 'false';
+        try {
+            Rivo_WTS_Bot::get_me($payload['token']);
+            Rivo_WTS_Settings_Bot::set_token($payload['token']);
+        } catch (Exception $e) {
+            wp_send_json_error(['message' => $e->getMessage()], 422);
+        }
+
+        wp_send_json_success();
+    }
+
+    public static function ajax_load_settings()
+    {
+        $bot_info      = null;
+        $chat_list     = [];
+        $start_message = '';
+
+        try {
+            $bot_info = Rivo_WTS_Bot::get_me();
+        } catch (Exception $e) {
+            wp_send_json_error(['message' => $e->getMessage()], 422);
+        }
+
+        try {
+            $chat_list = Rivo_WTS_Bot::get_chats_list();
+            empty($chat_list) && $start_message = '/start @' . Rivo_WTS_Bot::get_me()['username'];
+        } catch (Exception $e) {
+            wp_send_json_error(['message' => $e->getMessage()], 422);
+        }
+
+        wp_send_json_success([
+            'bot_info'      => $bot_info,
+            'chat_list'     => $chat_list,
+            'start_message' => $start_message,
+            'settings'      => Rivo_WTS_Settings_Bot::get()
+        ]);
+    }
+
+    public static function ajax_save_settings()
+    {
+        $chat_id = filter_input(INPUT_POST, 'chat_id', FILTER_SANITIZE_STRING);
+
+        if (!$chat_id) {
+            wp_send_json_error(['message' => 'Wrong chat id'], 404);
+        }
+
+        $settings             = Rivo_WTS_Settings_Bot::get();
+        $settings['chat_ids'] = [$chat_id];
+        Rivo_WTS_Settings_Bot::set($settings);
+
+        try {
+            if ($chat_name = Rivo_WTS_Bot::get_chat_name($chat_id)) {
+                update_option(Rivo_WTS_Bot::LAST_CHATS_OPTION_KEY, [$chat_id => $chat_name]);
             }
+        } catch (Exception $e) {
+        }
 
-         } catch (Exception $e) {
-            $search_results_content['request'] = 'token_error';
-            Rivo_WTS_Settings_Bot::set_token('');
-         }
+        wp_send_json_success();
+    }
 
-      echo json_encode($search_results_content);
-      wp_die();
-   }
+    public function ajax_send_test_message()
+    {
+        $chat_id = filter_input(INPUT_POST, 'chat_id', FILTER_SANITIZE_STRING);
 
-   public static function second_step_save_changes(){
-      $token_id = $_POST['token_id'];
-      $chat_id = $_POST['chat_id'];
+        if (!$chat_id) {
+            wp_send_json_error(['message' => 'Wrong chat id'], 404);
+        }
 
-       Rivo_WTS_Settings_Bot::set(['token'=>$token_id, 'chat_ids' => [$chat_id] ]);
+        try {
+            $text = 'Test message';
+            Rivo_WTS_Bot::send($text, [$chat_id]);
+        } catch (Exception $e) {
+            wp_send_json_error(['message' => $e->getMessage()], 422);
 
-      try{
-          if($chat_name = Rivo_WTS_Bot::get_chat_name($chat_id)) {
-              update_option(Rivo_WTS_Bot::LAST_CHATS_OPTION_KEY, [$chat_id => $chat_name]);
-   }
-      } catch(Exception $e) {
+        }
 
-      }
-   }
+        wp_send_json_success();
+    }
 }
-
-
-//add_action( 'wp_ajax_search_results', 'getStuffDone' );
-//add_action( 'wp_ajax_nopriv_search_results', 'getStuffDone' );
-//
-//function getStuffDone() {
-//   $search_results_content = array('9999999999999999');
-//   echo json_encode($search_results_content);
-//      wp_die();
-//}

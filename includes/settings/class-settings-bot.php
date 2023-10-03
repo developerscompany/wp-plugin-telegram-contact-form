@@ -11,5 +11,6 @@ class Rivo_WTS_Settings_Bot extends Rivo_WTS_Setting_Base
     public static function set_token($token)
     {
         self::set(array_merge(self::DEFAULTS, ['token' => $token]));
+        Rivo_WTS_Bot::clear_last_chats();
     }
 }

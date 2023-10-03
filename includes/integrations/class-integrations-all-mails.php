@@ -18,6 +18,6 @@ class Rivo_WTS_Integrations_All_Mails
         );
 
         $text = Rivo_WTS_Formatting::apply(Rivo_WTS_Settings_Integrations::TYPE_ALL_EMAILS, $text);
-        Rivo_WTS_Bot::send_message(null, $text);
+        Rivo_WTS_Bot::send($text);
     }
 }

@@ -2,8 +2,9 @@
 /**
  * Plugin Name: Telegram Form Notifications
  * Description: Easy send notifications about sunmited forms to telegram Bot or User
- * Author: Alexey Geyvan, RivoAgency
- * Text Domain: rivoforms
+ * Author: Yevhenii Hordievskyi
+ * Author URI: ffeynmann@gmail.com
+ * Text Domain: rivo-wts
  * Domain Path: /languages
  * Version: 1.0
  */

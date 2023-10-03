@@ -7,6 +7,8 @@
             "includes/class-formatting.php",
             "includes/class-main.php",
             "includes/class-utilities.php",
+            "includes/class-attachment.php",
+            "includes/class-i18n.php",
             "includes/admin-pages/class-admin-pages.php",
             "includes/admin-pages/class-admin-pages-about.php",
             "includes/admin-pages/class-admin-pages-bot.php",
@@ -20,6 +22,7 @@
             "includes/integrations/class-integrations.php",
             "includes/integrations/class-integrations-all-mails.php",
             "includes/integrations/class-integrations-contact-form.php",
+            "includes/integrations/class-integrations-wpforms.php",
             "includes/integrations/class-integrations-woocommerce.php"
         ]
     },
@@ -33,5 +36,6 @@
         "vendor-dir": "lib"
     },
     "require": {
+        "spatie/emoji": "4.0.0"
     }
 }

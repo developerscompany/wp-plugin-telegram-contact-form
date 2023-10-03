@@ -2,45 +2,31 @@
 
 class Rivo_WTS_Formatting
 {
-    public static function get_settings_for($type)
+    public static function apply($form_key, $text)
     {
-        return [
-            [
-                'text_before' => 'Siimme',
-                'text_after'  => 'Siimme2',
-                'bold'        => 1,
-                'italic'      => 1,
-                'icon'        => '😁'
-            ],
-            [
-                'text_before' => 'Type',
-                'text_after'  => '',
-                'bold'        => 0,
-                'italic'      => 1,
-                'icon'        => '😁'
-            ]
-        ];
+        $form_settings = Rivo_WTS_Settings_Notifications::get_form_settings($form_key);
 
-        return Rivo_WTS_Settings_Notifications::exampleFormData();
-    }
-
-    public static function apply($type, $text)
-    {
-        if(is_array($settings = self::get_settings_for($type))) {
-            foreach ($settings as $setting) {
-                if(empty($setting['text_before'])) {
-                    continue;
-                }
-
-                $text_replace_to = !empty($setting['text_after']) ? $setting['text_after'] : $setting['text_before'];
-
-                !empty($setting['bold']) && $text_replace_to = sprintf('<b>%s</b>', $text_replace_to);
-                !empty($setting['italic']) && $text_replace_to = sprintf('<i>%s</i>', $text_replace_to);
-                !empty($setting['icon']) && $text_replace_to = $setting['icon'] . $text_replace_to;
-
-                $text = str_replace($setting['text_before'], $text_replace_to, $text);
-            }
+        if(empty($form_settings)) {
+            return $text;
         }
+
+        foreach ($form_settings['replaces'] as $replace) {
+            if(empty($replace['text_before'])) {
+                continue;
+            }
+
+            $text_replace_to = !empty($replace['text_after']) ? $replace['text_after'] : $replace['text_before'];
+
+            !empty($replace['bold'])   && $text_replace_to = sprintf('<b>%s</b>', $text_replace_to);
+            !empty($replace['italic']) && $text_replace_to = sprintf('<i>%s</i>', $text_replace_to);
+            !empty($replace['emoji'])  && $text_replace_to = $replace['emoji'] . $text_replace_to;
+
+            $text = str_replace($replace['text_before'], $text_replace_to, $text);
+        }
+
+
+        !empty($form_settings['text_before']) && $text = $form_settings['text_before'] . "\n" . $text;
+        !empty($form_settings['text_after']) && $text = $text . "\n" . $form_settings['text_after'];
 
         return $text;
     }
