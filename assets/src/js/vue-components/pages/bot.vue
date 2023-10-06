@@ -12,7 +12,8 @@ export default {
             bot_info:             null,
             chat_list:            [],
             chat_id:              false,
-            start_message:        '',
+            for_update_chat_list: '',
+            error:                '',
             error_apply_token:    '',
             error_test_message:   '',
             settings:             {
@@ -34,27 +35,28 @@ export default {
             jQuery.ajax({
                 url:  rivo_wts.ajax_url,
                 type: 'POST',
-                data: {action: 'bot_save_token', payload: JSON.stringify({'token': this.token})}
+                data: {action: 'rivo_wts_bot_save_token', payload: JSON.stringify({'token': this.token})}
             })
                 .done(() => this.load_settings())
                 .fail(jqXHR => this.error_apply_token = JSON.parse(jqXHR.responseText).data.message)
                 .always(() => this.saving_token = false)
         },
         load_settings() {
-            this.loading_settings = true
+            this.loading_settings = true;
+            this.error = '';
 
             jQuery.ajax({
                 url:  rivo_wts.ajax_url,
                 type: 'POST',
-                data: {action: 'bot_load_settings'}
+                data: {action: 'rivo_wts_bot_load_settings'}
             })
                 .done(response => {
-                    this.settings      = response.data.settings
-                    this.bot_info      = response.data.bot_info;
-                    this.chat_list     = response.data.chat_list;
-                    this.start_message = response.data.start_message;
-                    this.chat_id       = this.settings.chat_ids.length ? this.settings.chat_ids[0] : ''
-                    this.token         = this.settings.token;
+                    this.settings             = response.data.settings
+                    this.bot_info             = response.data.bot_info;
+                    this.chat_list            = response.data.chat_list;
+                    this.for_update_chat_list = response.data.for_update_chat_list;
+                    this.chat_id              = this.settings.chat_ids.length ? this.settings.chat_ids[0] : ''
+                    this.token                = this.settings.token;
                 })
                 .fail(jqXHR => this.error = JSON.parse(jqXHR.responseText).data.message)
                 .always(() => this.loading_settings = false)
@@ -67,7 +69,7 @@ export default {
             jQuery.ajax({
                 url:  rivo_wts.ajax_url,
                 type: 'POST',
-                data: {action: 'bot_send_test_message', chat_id: this.chat_id}
+                data: {action: 'rivo_wts_bot_send_test_message', chat_id: this.chat_id}
             })
                 .fail(jqXHR => this.error_test_message = JSON.parse(jqXHR.responseText).data.message)
                 .always(() => this.loading_test_message = false)
@@ -80,7 +82,7 @@ export default {
             jQuery.ajax({
                 url:  rivo_wts.ajax_url,
                 type: 'POST',
-                data: {action: 'bot_save_settings', chat_id: this.chat_id}
+                data: {action: 'rivo_wts_bot_save_settings', chat_id: this.chat_id}
             })
                 .done(() => location = e.target.href)
                 .fail(jqXHR => alert(JSON.parse(jqXHR.responseText).data.message))
@@ -119,37 +121,39 @@ export default {
                 </div>
                 <div class="error" v-if="error_apply_token.length"> {{ error_apply_token }}</div>
             </div>
-            <template v-if="bot_info">
-                <div class="hr"></div>
-                <div class="bot-info">
+            <template v-if="settings.token.length && bot_info">
+                <div class="bot-info highlighted-block">
                     <div class="title" v-if="bot_info.first_name">
                         <strong>{{ i18n.active_bot }}:</strong>
-                        <span>{{ bot_info.first_name}}</span>
-                        <span v-if="bot_info.first_name"> @{{bot_info.username}}</span>
+                        <span>{{ bot_info.first_name }}</span>
+                        <span v-if="bot_info.first_name"> @{{ bot_info.username }}</span>
+                    </div>
+                </div>
+                <div class="highlighted-block" v-html="for_update_chat_list"></div>
+                <div class="hr"></div>
+                <div class="chat-id-selector">
+                    <div class="choose">
+                        <div class="title"><strong>{{ i18n.choose_chat }}:</strong></div>
+                        <div class="error" v-if="settings.token.length && !Object.keys(chat_list).length">
+                            {{ i18n.no_chats }}
+                        </div>
+                        <div class="chats">
+                            <div class="radio-wrapper" v-for="(name, id) in chat_list">
+                                <input type="radio" :value="id" :id="'chat_id' + id" v-model="chat_id">
+                                <label :for="'chat_id' + id">{{ name }}</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="text-align: right">
+                        <div class="btn outline-main" @click="send_test_message" v-if="chat_id">
+                            {{ i18n.send_test_message }}
+                            <wts-loader :enabled="loading_test_message"></wts-loader>
+                        </div>
+                        <div class="error" v-if="error_test_message.length"> {{ error_test_message }}</div>
                     </div>
                 </div>
             </template>
-            <div class="hr"></div>
-            <div class="chat-id-selector" v-if="settings.token.length">
-                <div class="choose">
-                    <div class="title"><strong>{{ i18n.choose_chat }}:</strong></div>
-                    <template v-if="settings.token.length && !Object.keys(chat_list).length">
-                        <div class="error">{{ i18n.no_chats }}</div>
-                        <div class="error" v-if="start_message.length">{{ start_message }}</div>
-                    </template>
-                    <div class="radio-wrapper" v-for="(name, id) in chat_list">
-                        <input type="radio" :value="id" :id="'chat_id' + id" v-model="chat_id">
-                        <label :for="'chat_id' + id">{{ name }}</label>
-                    </div>
-                </div>
-                <div style="text-align: right">
-                    <div class="btn outline-main" @click="send_test_message" v-if="chat_id">
-                        {{ i18n.send_test_message }}
-                        <wts-loader :enabled="loading_test_message"></wts-loader>
-                    </div>
-                    <div class="error" v-if="error_test_message.length"> {{ error_test_message }}</div>
-                </div>
-            </div>
+            <div class="error" v-if="error.length">{{ error }}</div>
         </div>
         <div class="hr"></div>
         <div class="footer">
@@ -161,7 +165,6 @@ export default {
             </a>
         </div>
     </div>
-
 </template>
 
 <style lang="scss" scoped>
@@ -178,10 +181,6 @@ h1 {
     gap: $gap;
 }
 
-.radio-wrapper + .radio-wrapper {
-    margin-top: 10px;
-}
-
 .token-settings {
     .form {
         display: flex;
@@ -190,15 +189,19 @@ h1 {
     }
 }
 
-.title + * {
-    margin-top: 10px;
+.chats {
+    display: grid;
+    gap: 10px;
 }
 
 .chat-id-selector {
     display: flex;
+    gap: 10px;
     align-items: flex-start;
 
     .choose {
+        display: grid;
+        gap: 10px;
         flex-basis: 100%;
     }
 }

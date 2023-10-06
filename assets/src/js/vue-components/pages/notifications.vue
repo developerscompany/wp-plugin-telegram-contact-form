@@ -29,7 +29,7 @@ export default {
             jQuery.ajax({
                 url:  rivo_wts.ajax_url,
                 type: 'POST',
-                data: {action: 'notifications_load_settings'}
+                data: {action: 'rivo_wts_notifications_load_settings'}
             })
                 .done(response => {
                     this.forms = response.data.forms;
@@ -58,7 +58,7 @@ export default {
             jQuery.ajax({
                 url:  rivo_wts.ajax_url,
                 type: 'POST',
-                data: {action: 'notifications_save_settings', payload: JSON.stringify({forms: {...this.forms}})}
+                data: {action: 'rivo_wts_notifications_save_settings', payload: JSON.stringify({forms: {...this.forms}})}
             })
                 .done(() => this.saved())
                 .fail(jqXHR => this.error = JSON.parse(jqXHR.responseText).data.message)

@@ -2,3 +2,11 @@
 .trans {
 	transition: all .3s;
 }
+
+pre, .highlighted-block {
+	padding: $gap;
+	white-space: break-spaces;
+	border-radius: $border-radius;
+	border: 1px solid $color-border;
+	background-color: $color-gray-light;
+}

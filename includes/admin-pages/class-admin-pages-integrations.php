@@ -9,8 +9,8 @@ class Rivo_WTS_Admin_Pages_Integrations
     {
         add_action('admin_menu', [__CLASS__, 'add_menu'], 10000);
 
-        add_action('wp_ajax_integrations_load_settings', [__CLASS__, 'ajax_load_settings']);
-        add_action('wp_ajax_integrations_save_settings', [__CLASS__, 'ajax_save_settings']);
+        add_action('wp_ajax_rivo_wts_integrations_load_settings', [__CLASS__, 'ajax_load_settings']);
+        add_action('wp_ajax_rivo_wts_integrations_save_settings', [__CLASS__, 'ajax_save_settings']);
     }
 
     public static function add_menu()

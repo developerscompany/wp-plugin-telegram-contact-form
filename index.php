@@ -1,12 +1,12 @@
 <?php
 /**
- * Plugin Name: Telegram Form Notifications
+ * Plugin Name: Rivo Telegram Form Notifications
  * Description: Easy send notifications about sunmited forms to telegram Bot or User
  * Author: Yevhenii Hordievskyi
  * Author URI: ffeynmann@gmail.com
  * Text Domain: rivo-wts
  * Domain Path: /languages
- * Version: 1.0
+ * Version: 1.1
  */
 
 
@@ -24,7 +24,7 @@ if (!defined("Rivo_WTS_TEXTDOMAIN")) {
     define('Rivo_WTS_TEXTDOMAIN', 'rivo-wts');
 }
 if (!defined("Rivo_WTS_VERSION")) {
-    define('Rivo_WTS_VERSION', "1.0");
+    define('Rivo_WTS_VERSION', "1.1");
 }
 
 require __DIR__ . '/lib/autoload.php';

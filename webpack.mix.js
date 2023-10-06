@@ -3,13 +3,13 @@
 let mix = require("laravel-mix");
 const path = require("path");
 
-var LiveReloadPlugin = require('webpack-livereload-plugin');
-mix.webpackConfig({
-    plugins: [new LiveReloadPlugin()]
-});
+// var LiveReloadPlugin = require('webpack-livereload-plugin');
+// mix.webpackConfig({
+//     plugins: [new LiveReloadPlugin()]
+// });
 
 mix.setPublicPath('assets/dist');
-mix.setResourceRoot('/wp-content/plugins/wp-plugin-telegram-contact-form/assets/dist');
+mix.setResourceRoot('/wp-content/plugins/rivo_wts/assets/dist');
 
 mix.alias({
     '~src': path.resolve(__dirname, './assets/src'),

@@ -29,7 +29,7 @@ export default {
             jQuery.ajax({
                 url:  rivo_wts.ajax_url,
                 type: 'POST',
-                data: {action: 'integrations_load_settings'}
+                data: {action: 'rivo_wts_integrations_load_settings'}
             })
                 .done(response => {
                     this.settings = response.data.settings;
@@ -47,7 +47,7 @@ export default {
             jQuery.ajax({
                 url:  rivo_wts.ajax_url,
                 type: 'POST',
-                data: {action: 'integrations_save_settings', payload: JSON.stringify(this.settings)}
+                data: {action: 'rivo_wts_integrations_save_settings', payload: JSON.stringify(this.settings)}
             })
                 .done(() => location = e.target.href)
                 .fail(jqXHR => this.error = JSON.parse(jqXHR.responseText).data.message)
@@ -116,7 +116,7 @@ export default {
 if(class_exists('Rivo_WTS_Bot') &&
    method_exists(Rivo_WTS_Bot::class, 'send_message')
 ) {
-    Rivo_WTS_Bot::send_message('Test message');
+    Rivo_WTS_Bot::send('Test message');
 }
 </pre>
             </div>
@@ -170,12 +170,4 @@ h1 {
     display: grid;
     gap: $gap;
 }
-
-pre {
-    padding: $gap;
-    white-space: break-spaces;
-    border-radius: $border-radius;
-    background-color: $color-gray-light;
-}
-
 </style>

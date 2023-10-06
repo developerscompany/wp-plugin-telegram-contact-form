@@ -7,8 +7,8 @@ class Rivo_WTS_Admin_Pages_Notifications
     public static function init()
     {
         add_action('admin_menu', [__CLASS__, 'add_menu'], 10000);
-        add_action('wp_ajax_notifications_load_settings', [__CLASS__, 'load_settings']);
-        add_action('wp_ajax_notifications_save_settings', [__CLASS__, 'save_settings']);
+        add_action('wp_ajax_rivo_wts_notifications_load_settings', [__CLASS__, 'load_settings']);
+        add_action('wp_ajax_rivo_wts_notifications_save_settings', [__CLASS__, 'save_settings']);
     }
 
     public static function add_menu()

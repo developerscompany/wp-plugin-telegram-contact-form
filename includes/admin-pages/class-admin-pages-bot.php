@@ -8,10 +8,10 @@ class Rivo_WTS_Admin_Pages_Bot
     public static function init()
     {
         add_action('admin_menu', [__CLASS__, 'add_menu'], 10000);
-        add_action('wp_ajax_bot_save_token', [__CLASS__, 'ajax_save_token']);
-        add_action('wp_ajax_bot_load_settings', [__CLASS__, 'ajax_load_settings']);
-        add_action('wp_ajax_bot_save_settings', [__CLASS__, 'ajax_save_settings']);
-        add_action('wp_ajax_bot_send_test_message', [__CLASS__, 'ajax_send_test_message']);
+        add_action('wp_ajax_rivo_wts_bot_save_token', [__CLASS__, 'ajax_save_token']);
+        add_action('wp_ajax_rivo_wts_bot_load_settings', [__CLASS__, 'ajax_load_settings']);
+        add_action('wp_ajax_rivo_wts_bot_save_settings', [__CLASS__, 'ajax_save_settings']);
+        add_action('wp_ajax_rivo_wts_bot_send_test_message', [__CLASS__, 'ajax_send_test_message']);
     }
 
     public static function add_menu()
@@ -52,28 +52,24 @@ class Rivo_WTS_Admin_Pages_Bot
 
     public static function ajax_load_settings()
     {
-        $bot_info      = null;
-        $chat_list     = [];
-        $start_message = '';
+        $bot_info  = null;
+        $chat_list = [];
 
         try {
-            $bot_info = Rivo_WTS_Bot::get_me();
-        } catch (Exception $e) {
-            wp_send_json_error(['message' => $e->getMessage()], 422);
-        }
-
-        try {
+            $bot_info  = Rivo_WTS_Bot::get_me();
             $chat_list = Rivo_WTS_Bot::get_chats_list();
-            empty($chat_list) && $start_message = '/start @' . Rivo_WTS_Bot::get_me()['username'];
         } catch (Exception $e) {
             wp_send_json_error(['message' => $e->getMessage()], 422);
         }
 
         wp_send_json_success([
-            'bot_info'      => $bot_info,
-            'chat_list'     => $chat_list,
-            'start_message' => $start_message,
-            'settings'      => Rivo_WTS_Settings_Bot::get()
+            'bot_info'             => $bot_info,
+            'chat_list'            => $chat_list,
+            'for_update_chat_list' => sprintf("%s<br /><strong>%s</strong>",
+                Rivo_WTS_i18n::texts()['for_update_chat_list'],
+                '/start @' . $bot_info['username']
+            ),
+            'settings'             => Rivo_WTS_Settings_Bot::get()
         ]);
     }
 
@@ -99,7 +95,7 @@ class Rivo_WTS_Admin_Pages_Bot
         wp_send_json_success();
     }
 
-    public function ajax_send_test_message()
+    public static function ajax_send_test_message()
     {
         $chat_id = filter_input(INPUT_POST, 'chat_id', FILTER_SANITIZE_STRING);
 

@@ -26,7 +26,7 @@ class Rivo_WTS_Formatting
 
 
         !empty($form_settings['text_before']) && $text = $form_settings['text_before'] . "\n" . $text;
-        !empty($form_settings['text_after']) && $text = $text . "\n" . $form_settings['text_after'];
+        !empty($form_settings['text_after']) && $text = $text . $form_settings['text_after'];
 
         return $text;
     }
