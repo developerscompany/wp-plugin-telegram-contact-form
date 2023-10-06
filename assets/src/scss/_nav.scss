@@ -1,5 +1,5 @@
 .nav-container {
-	padding: 12px $padding;
+	padding: 12px var(--padding);
 	background-color: white;
 	margin-left: -20px;
 
@@ -9,8 +9,8 @@
 		ul {
 			display: inline-block;
 
-			border: 1px solid $color-border;
-			border-radius: $border-radius;
+			border: 1px solid var(--color-border);
+			border-radius: var(--border-radius);
 			counter-reset: nav-ul;
 		}
 
@@ -18,18 +18,17 @@
 			display: inline-block;
 			position: relative;
 			align-items: center;
-
-			@extend .trans;
+			transition: var(--transition);
 
 			& + li {
-				border-left: 1px solid $color-border;
+				border-left: 1px solid var(--color-border);
 			}
 
 			&.active, &:hover {
-				background-color: $color-gray-light;
+				background-color: var(--color-gray-light);
 
 				&::after {
-					background-color: $color-gray-light !important;
+					background-color: var(--color-gray-light) !important;
 				}
 			}
 
@@ -69,13 +68,12 @@
 				top: 50%;
 				right: 0;
 				transform: translateY(-50%) translateX(50%) rotate(45deg);
-				border-top: 1px solid $color-border;
-				border-right: 1px solid $color-border;
+				border-top: 1px solid var(--color-border);
+				border-right: 1px solid var(--color-border);
 				background-color: white;
 				z-index: 2;
 				content: '';
-
-				@extend .trans;
+				transition: var(--transition);
 			}
 		}
 
@@ -83,7 +81,7 @@
 			display: inline-block;
 			align-items: center;
 			padding-left: 12px;
-			padding-right: $padding;
+			padding-right: var(--padding);
 			height: 40px;
 			font-family: Gilroy SemiBold;
 			font-size: 15px;

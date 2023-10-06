@@ -40,8 +40,6 @@ export default {
 </template>
 
 <style scoped lang="scss">
-@import "~scss/_variables.scss";
-@import "~scss/_misc";
 
 .select-wrapper {
     position: relative;
@@ -51,15 +49,15 @@ export default {
 .current {
     position: relative;
     padding: 16px;
-    border: 1px solid $color-orange;
-    border-radius: $border-radius;
+    border: 1px solid var(--color-orange);
+    border-radius: var(--border-radius);
 
     &::after {
         position: absolute;
         top: 50%;
         right: 16px;
         transform: translateY(-50%);
-        border-top: 4px solid $color-gray;
+        border-top: 4px solid var(--color-gray);
         border-left: 4px solid white;
         border-right: 4px solid white;
         content: '';
@@ -73,12 +71,12 @@ export default {
     width: 100%;
     padding-top: 10px;
     background-color: white;
-    border-radius: $border-radius;
+    border-radius: var(--border-radius);
     z-index: 5;
 }
 
 .list-inner {
-    border-radius: $border-radius;
+    border-radius: var(--border-radius);
     border: 1px solid #efefef;
     max-height: 275px;
     overflow: auto;
@@ -87,8 +85,7 @@ export default {
 .item {
     padding: 16px;
     background-color: white;
-
-    @extend .trans;
+    transition: var(--transition);
 
     &:hover {
         background-color: #f4f4f4;

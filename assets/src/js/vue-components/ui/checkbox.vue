@@ -25,9 +25,6 @@ export default {
 </template>
 
 <style scoped lang="scss">
-@import "~scss/_variables.scss";
-@import "~scss/_misc";
-
     input {
         display: none;
 
@@ -48,7 +45,7 @@ export default {
                 left: 0;
                 width: 16px;
                 height: 16px;
-                border: 1px solid $color-gray;
+                border: 1px solid var(--color-gray);
                 border-radius: 2px;
             }
 
@@ -63,7 +60,7 @@ export default {
 
         &:checked + label {
             &::before {
-                border-color: $color-main;
+                border-color: var(--color-main);
             }
 
             &::after {

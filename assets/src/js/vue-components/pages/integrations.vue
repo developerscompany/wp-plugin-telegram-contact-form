@@ -136,9 +136,6 @@ if(class_exists('Rivo_WTS_Bot') &&
 </template>
 
 <style lang="scss" scoped>
-@import "~scss/_variables.scss";
-@import "~scss/_misc";
-
 h1 {
     display: flex;
     align-items: center;
@@ -146,7 +143,7 @@ h1 {
 
 .inner {
     display: grid;
-    gap: $gap;
+    gap: var(--gap);
 }
 
 .types-selector {
@@ -168,6 +165,6 @@ h1 {
 
 .plugins {
     display: grid;
-    gap: $gap;
+    gap: var(--gap);
 }
 </style>

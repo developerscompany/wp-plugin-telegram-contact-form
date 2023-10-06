@@ -18,9 +18,6 @@ export default {
 </template>
 
 <style scoped lang="scss">
-@import "~scss/_variables.scss";
-@import "~scss/_misc";
-
 .input-wrapper {
     display: flex;
     align-items: stretch;
@@ -30,16 +27,15 @@ export default {
 
 input {
     flex-basis: 100%;
-    border-radius: $border-radius;
-    border: 1px solid $color-border;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--color-border);
     outline: none !important;
     box-shadow: none !important;
     padding: 10px 16px;
-
-    @extend .trans;
+    transition: var(--transition);
 
     &:focus {
-        border-color: $color-gray-focused;
+        border-color: var(--color-gray-focused);
     }
 }
 

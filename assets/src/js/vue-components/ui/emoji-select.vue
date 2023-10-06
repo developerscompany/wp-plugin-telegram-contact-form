@@ -39,9 +39,6 @@ export default {
 </template>
 
 <style scoped lang="scss">
-@import "~scss/_variables.scss";
-@import "~scss/_misc";
-
 .select-wrapper {
     position: relative;
     display: flex;
@@ -56,8 +53,8 @@ export default {
     align-items: center;
     padding-left: 16px;
     padding-right: 36px;
-    border: 1px solid $color-border;
-    border-radius: $border-radius;
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
     min-width: 72px;
 
     &::after {
@@ -65,7 +62,7 @@ export default {
         top: 50%;
         right: 16px;
         transform: translateY(-50%);
-        border-top: 4px solid $color-gray;
+        border-top: 4px solid var(--color-gray);
         border-left: 4px solid white;
         border-right: 4px solid white;
         content: '';
@@ -79,13 +76,13 @@ export default {
     width: auto;
     padding-top: 10px;
     background-color: white;
-    border-radius: $border-radius;
+    border-radius: var(--border-radius);
     z-index: 5;
 }
 
 .list-wrapper {
     padding: 5px;
-    border-radius: $border-radius;
+    border-radius: var(--border-radius);
     border: 1px solid #efefef;
 }
 

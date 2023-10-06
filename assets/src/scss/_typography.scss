@@ -47,15 +47,15 @@ a {
 }
 
 .text-color-main {
-	color: $color-main;
+	color: var(--color-main);
 }
 
 .text-color-danger {
-	color: $color-danger;
+	color: var(--color-danger);
 }
 
 .text-color-gray {
-	color: $color-gray;
+	color: var(--color-gray);
 }
 
 strong {

@@ -110,7 +110,7 @@ export default {
         <div class="error" v-if="error.length"> {{ error }}</div>
         <div class="hr"></div>
         <div class="footer">
-            <a :href="i18n.link_bot" class="btn outline-black">{{ i18n.previous_step }}</a>
+            <a :href="i18n.link_integrations" class="btn outline-black">{{ i18n.previous_step }}</a>
             <a :href="i18n.link_notifications" class="btn filled" @click="save_settings"
                :class="{disabled: false}">
                 <span ref="save_button">{{ i18n.save_settings }}</span>
@@ -122,8 +122,6 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-@import "~scss/_variables.scss";
-@import "~scss/_misc";
 
 h1 {
     display: flex;
@@ -132,17 +130,17 @@ h1 {
 
 .inner {
     display: grid;
-    gap: $gap;
+    gap: var(--gap);
 }
 
 .form-settings {
     display: grid;
-    gap: $gap;
+    gap: var(--gap);
 }
 
 .replaces {
     display: grid;
-    gap: $gap;
+    gap: var(--gap);
 }
 
 .replace {
@@ -177,7 +175,7 @@ h1 {
 .add-new-replace {
     border: 1px dashed #cdcdcd;
     padding: 15px;
-    border-radius: $border-radius;
+    border-radius: var(--border-radius);
     font-family: "Gilroy SemiBold";
     font-size: 14px;
     text-align:center;

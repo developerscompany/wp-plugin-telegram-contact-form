@@ -16,9 +16,6 @@ export default {
 </template>
 
 <style scoped lang="scss">
-@import "~scss/_variables.scss";
-@import "~scss/_misc";
-
 div {
     display: flex;
     align-items: center;
@@ -27,21 +24,20 @@ div {
     padding-left: 16px;
     padding-right: 16px;
     min-width: 42px;
-    border: 1px solid $color-main;
-    border-radius: $border-radius;
+    border: 1px solid var(--color-main);
+    border-radius: var(--border-radius);
     background-color: white;
-    color: $color-main;
+    color: var(--color-main);
     font-weight: 600;
     cursor: pointer;
-
-    @extend .trans;
+    transition: var(--transition);
 
     &.italic {
         font-style: italic;
     }
 
     &.checked {
-        background-color: $color-border;
+        background-color: var(--color-border);
     }
 }
 

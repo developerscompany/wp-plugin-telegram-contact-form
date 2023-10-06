@@ -168,9 +168,6 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-@import "~scss/_variables.scss";
-@import "~scss/_misc";
-
 h1 {
     display: flex;
     align-items: center;
@@ -178,7 +175,7 @@ h1 {
 
 .inner {
     display: grid;
-    gap: $gap;
+    gap: var(--gap);
 }
 
 .token-settings {

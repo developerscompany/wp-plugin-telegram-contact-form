@@ -11,9 +11,6 @@ export default {
 </template>
 
 <style scoped lang="scss">
-@import "~scss/_variables.scss";
-@import "~scss/_misc";
-
 div {
     position: absolute;
     top: 0;
@@ -23,7 +20,7 @@ div {
     background-color: white;
     font-size: 11px;
     color: rgba(#1B2023, .5);
-    border-radius: $border-radius;
+    border-radius: var(--border-radius);
 }
 
 </style>
